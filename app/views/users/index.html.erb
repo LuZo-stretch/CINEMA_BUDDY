@@ -1,0 +1,30 @@
+<h1>List of Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key(resize: '100x100') %>
+          <% else %>
+            <!-- Default image or placeholder -->
+            <%= image_tag("default-avatar.png", width: 100, height: 100, crop: :fill) %>
+          <% end %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.age %></td>
+        <td><%= user.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
