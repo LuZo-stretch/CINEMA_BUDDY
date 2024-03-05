@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts 'Seeding users...'
+10.times do
+  User.create!(
+    email: Faker::Internet.email,
+    name: Faker::Name.name,
+    age: Faker::Number.between(from: 18, to: 99),
+    description: Faker::Lorem.paragraph
+  )
+end
