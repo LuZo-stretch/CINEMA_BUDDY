@@ -13,11 +13,11 @@
     <% @users.each do |user| %>
       <tr>
         <td>
-          <% if user.avatar.attached? %>
-            <%= cl_image_tag user.avatar.key(resize: '100x100') %>
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key(resize: '100x100') %>
           <% else %>
             <!-- Default image or placeholder -->
-            <%= cl_image_tag 'default-avatar.png', size: '100x100' %>
+            <%= image_tag("default-avatar.png", width: 100, height: 100, crop: :fill) %>
           <% end %>
         </td>
         <td><%= user.name %></td>
