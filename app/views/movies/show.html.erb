@@ -1,0 +1,4 @@
+<% @movies.each do |movie| %>
+<%= cl_image_tag movie.photo.key %>
+<%= movie.title %>
+<% end %>
