@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
   resources :movies, only: :show
+  resources :cinemas, only: :index
 end
