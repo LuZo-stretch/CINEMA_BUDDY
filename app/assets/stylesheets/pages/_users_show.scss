@@ -1,0 +1,69 @@
+// .profile-card {
+//   background-size: cover;
+//   background-position: center;
+//   padding: 150px 0;
+// }
+
+// .profile-card h1 {
+//   margin: 0;
+//   color: white;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+//   font-size: 32px;
+//   font-weight: bold;
+// }
+
+// .profile-card p {
+//   font-size: 20px;
+//   color: white;
+//   opacity: .7;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+// }
+
+.profile-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 270px; /* Adjust as needed */
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px; /* Adjust as needed for spacing */
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.user-container h1,
+.user-container p {
+  margin: 0;
+}
+
+.container h2 {
+  margin-top: 50px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-category {
+  width: 30%; /* Adjust as needed */
+  margin-bottom: 10px; /* Adjust as needed for spacing */
+}
+
+.card-image {
+  width: 90px;
+  height: 100px; /* Adjust as needed */
+  background-size: cover;
+  background-position: center;
+  border-radius: 7%;
+}

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  before_validation :skip_password_validation, on: :create
+  before_validation :skip_password_validation, on: [:create, :show]
 
   private
 
