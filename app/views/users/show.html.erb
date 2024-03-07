@@ -2,7 +2,7 @@
   <% if @user.photo.attached? %>
     <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
   <% else %>
-    <%= image_tag("default-avatar.png", class: 'profile-img') %>
+    <%= image_tag("default-avatar1.png", class: 'profile-img') %>
   <% end %>
   <div class="user-container">
     <h1><%= @user.name %></h1>
