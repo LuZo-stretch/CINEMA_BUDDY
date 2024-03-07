@@ -12,9 +12,7 @@ require "open-uri"
 puts "Deleting everything..."
 LikedMovie.destroy_all
 Match.destroy_all
-CinemaShow.destroy_all
 Movie.destroy_all
-Cinema.destroy_all
 User.destroy_all
 
 puts "Creating users..."
@@ -23,11 +21,6 @@ ana = User.create!(name: "Ana", email: "ana@gmail.com", age: 39, description: "I
 george = User.create!(name: "George", email: "george@gmail.com", age: 39, description: "I like action and war movies. My favorite is Indiana Jones. I like to play Risk and Monopoly if I am not watching movies.", password: "123456")
 joana = User.create!(name: "Joana", email: "joana@gmail.com", age: 35, description: "I like romcoms and eating popcorn when I go to the cinema. I love good food and talking about movies I have enjoyed.", password: "123456")
 
-puts "Creating cinemas..."
-picturehouse_central = Cinema.create!(name: "Picturehouse Central", address: "15 Great Windmill Street, London", cinema_url: "https://www.picturehouses.com")
-curzon_soho = Cinema.create!(name: "Curzon Soho", address: "99 Shaftesbury Avenue, London", cinema_url: "https://www.curzon.com")
-vue_westend = Cinema.create!(name: "Vue Cinema London - West End", address: "3 Cranbourn Street, London", cinema_url: "https://www.myvue.com")
-vue_piccadilly = Cinema.create!(name: "Vue Cinema London - Piccadilly", address: "19 Lower Regent Street, London", cinema_url: "https://www.myvue.com")
 
 puts "Creating movies..."
 harry_potter_file = URI.open("https://media.themoviedb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg")
@@ -74,13 +67,6 @@ match_3 = Match.create!(user_id: ana.id, user_match_id: george.id)
 match_4 = Match.create!(user_id: joana.id, user_match_id: lucia.id)
 match_5 = Match.create!(user_id: lucia.id, user_match_id: george.id)
 
-puts "Creating cinema_shows..."
-curzon1 = CinemaShow.create!(cinema_id: curzon_soho.id, movie_id: harry_potter.id)
-curzon2 = CinemaShow.create!(cinema_id: curzon_soho.id, movie_id: indiana_jones.id)
-picturehouse1 = CinemaShow.create!(cinema_id: picturehouse_central.id, movie_id: spirited_away.id)
-picturehouse2 = CinemaShow.create!(cinema_id: picturehouse_central.id, movie_id: meg.id)
-vue1 = CinemaShow.create!(cinema_id: vue_westend.id, movie_id: suzume.id)
-vue2 = CinemaShow.create!(cinema_id: vue_westend.id, movie_id: meg.id)
-vue3 = CinemaShow.create!(cinema_id: vue_piccadilly.id, movie_id: spirited_away.id)
+
 
 puts "All done!"
