@@ -1,0 +1,33 @@
+<div class="profile-card">
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
+  <% else %>
+    <%= image_tag("default-avatar1.png", class: 'profile-img') %>
+  <% end %>
+  <div class="user-container">
+    <h1><%= @user.name %></h1>
+    <p><%= @user.age %></p>
+  </div>
+</div>
+<div class="container mt-3">
+  <p><%= @user.description %></p>
+</div>
+<div class="container">
+  <h2>Liked Movies</h2>
+  <div class="cards row col-12 mt-4">
+    <div class="card-category">
+      <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://m.media-amazon.com/images/I/81PJCFAgdkL._UF1000,1000_QL80_.jpg)"></div>
+      <p>Moonlight</p>
+    </div>
+
+    <div class="card-category">
+      <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://upload.wikimedia.org/wikipedia/pt/c/c0/La_La_Land_%28filme%29.png)"></div>
+      <p>La La Land</p>
+    </div>
+
+    <div class="card-category">
+      <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_.jpg)"></div>
+      <p>The Martian</p>
+    </div>
+  </div>
+</div>
