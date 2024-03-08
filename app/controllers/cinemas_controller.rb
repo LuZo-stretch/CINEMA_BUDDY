@@ -1,2 +1,0 @@
-class CinemasController < ApplicationController
-end
