@@ -1,7 +1,16 @@
-<a href="#" id="like-button" data-id="<%= @movie.id %>">Like</a>
-<% if  current_user.favorited?(@movie) %>
-<p>liked</p>
+<%= render 'shared/navbar' %>
+<h1>Anahi's code here</h1>
+<% @movies.each do |movie| %>
+<%= cl_image_tag movie.photo.key %>
+<%= movie.title %>
+<a href="#" id="like-button" data-id="<%= movie.id %>">Like</a>
+  <% if  current_user.favorited?(movie) %>
+  <p>liked</p>
+  <% end %>
 <% end %>
+
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.like-button').forEach(function(button) {

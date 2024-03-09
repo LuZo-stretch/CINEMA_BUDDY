@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+.home {
+  background-image: image-url('test.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  color: aliceblue;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.intro {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
