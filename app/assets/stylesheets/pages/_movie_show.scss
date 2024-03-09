@@ -1,0 +1,90 @@
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  /* Adjusting styles for smaller screens */
+  @media only screen and (max-width: 414px) { /* iPhone 14 width */
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px; /* Adjust height as needed */
+  border-radius: 10px;
+
+  /* Adjusting styles for smaller screens */
+  @media only screen and (max-width: 414px) { /* iPhone 14 width */
+    border-radius: 0;
+  }
+}
+
+.movie-details {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.movie-details h1 {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.movie-details p {
+  font-size: 16px;
+  color: #fffefe;
+  line-height: 1.5;
+}
+
+.ratings-date {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ratings-date p {
+  margin: 0 10px;
+  font-size: 14px;
+  color: #999;
+}
+
+// .confirm-button {
+//   position: fixed;
+//   bottom: 20px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   background-color: #670a0a;
+//   color: white;
+//   border: none;
+//   padding: 10px 20px;
+//   border-radius: 5px;
+//   cursor: pointer;
+
+//   /* Hover effect */
+//   transition: background-color 0.3s ease;
+// }
+
+.confirm-button:hover {
+  background-color: #341d1d; /* Change color on hover */
+}
+
+.like-icon {
+  position: absolute;
+  top: 10px; // Adjust to position the icon from the top of the container
+  right: 10px; // Adjust to position the icon from the right of the container
+  font-size: 24px; // Adjust the size of the heart icon as needed
+  color: #791515b7; // Icon color
+  opacity: 0.75; // Make the icon slightly translucent by default
+  &:hover {
+    opacity: 1; // Fully opaque when hovered
+    cursor: pointer;
+    color: #670a0a;
+  }
+}

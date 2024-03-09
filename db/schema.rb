@@ -49,6 +49,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_190017) do
     t.index ["match_id"], name: "index_chats_on_match_id"
   end
 
+  create_table "cinema_shows", force: :cascade do |t|
+    t.bigint "cinema_id", null: false
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_id"], name: "index_cinema_shows_on_cinema_id"
+    t.index ["movie_id"], name: "index_cinema_shows_on_movie_id"
+  end
+
+  create_table "cinemas", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "cinema_url"
+    t.integer "rating"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "liked_movies", force: :cascade do |t|
     t.bigint "movie_id", null: false
     t.bigint "user_id", null: false
@@ -107,6 +126,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_190017) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chats", "matches"
+  add_foreign_key "cinema_shows", "cinemas"
+  add_foreign_key "cinema_shows", "movies"
   add_foreign_key "liked_movies", "movies"
   add_foreign_key "liked_movies", "users"
   add_foreign_key "matches", "users"
