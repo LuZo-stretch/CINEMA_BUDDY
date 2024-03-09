@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, only: :toggle_favorite
+
   def index
     @movies = Movie.all
     @movie = Movie.find_by(id: params[:id])
@@ -8,6 +9,10 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find_by(id: params[:id])
   end
+
+  # def show
+  #   @movie = Movie.find(params[:id])
+  # end
 
   def toggle_favorite
     @movie = Movie.find_by(id: params[:id])
@@ -24,4 +29,5 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:id)
   end
+
 end
