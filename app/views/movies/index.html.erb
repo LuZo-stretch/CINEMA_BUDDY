@@ -1,73 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Movie Index</title>
-<link rel="stylesheet" href="style.css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" target='_blank' />
 </head>
 <body>
-<header>
-  <h1>Available Movies</h1>
-</header>
-<main>
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 1</h3>
-      <p>Rating: 4.5</p>
-    </div>
-  </div>
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 2</h3>
-      <p>Rating: 3.9</p>
-    </div>
-  </div>
-  <!-- Add more movie cards as needed -->
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 3</h3>
-      <p>Rating: 4.2</p>
-    </div>
-  </div>
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 4</h3>
-      <p>Rating: 4.0</p>
-    </div>
-  </div>
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 5</h3>
-      <p>Rating: 3.7</p>
-    </div>
-  </div>
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 6</h3>
-      <p>Rating: 4.1</p>
-    </div>
-  </div>
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 7</h3>
-      <p>Rating: 3.8</p>
-    </div>
-  </div>
-  <div class="movie">
-    <img src="https://via.placeholder.com/150" alt="Movie Poster">
-    <div class="movie-info">
-      <h3>Movie Title 8</h3>
-      <p>Rating: 4.3</p>
-    </div>
-  </div>
-</main>
+  <header>
+    <h1>Discover Your Next Movie Adventure!</h1>
+  </header>
+  <main>
+    <% @movies.each do |movie| %>
+      <div class="movie">
+        <div class="movie-image">
+          <!-- Check if the movie has an attached photo, and use the correct image_tag -->
+          <% if movie.photo.attached? %>
+            <%= image_tag url_for(movie.photo), alt: "Movie Poster", class: "movie-poster" %>
+          <% else %>
+            <%= image_tag 'default_poster.jpg', alt: "Default Movie Poster", class: "movie-poster" %>
+          <% end %>
+          <!-- Like icon positioned within the movie-image container -->
+          <div class="like-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+        </div>
+        <div class="movie-details">
+          <!-- Date on the left -->
+          <div class="movie-info">
+            <i class="fas fa-calendar-alt"></i>
+            <p><%= movie.end_date.strftime("%B %d, %Y") %></p>
+          </div>
+          <!-- Rating on the right -->
+          <div class="movie-info">
+            <i class="fas fa-star"></i>
+            <p><%= movie.rating %></p>
+          </div>
+        </div>
+        <h3><%= movie.title %></h3>
+      </div>
+    <% end %>
+  </main>
+  <!-- Confirm button -->
+  <button class="confirm-button">Confirm Selection</button>
 </body>
 </html>
+
