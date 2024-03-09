@@ -1,46 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" target='_blank' />
-</head>
-<body>
-  <header>
-    <h1>Discover Your Next Movie Adventure!</h1>
-  </header>
-  <main>
-    <% @movies.each do |movie| %>
-      <div class="movie">
-        <div class="movie-image">
+<main>
+  <% @movies.each do |movie| %>
+    <div class="movie">
+      <div class="movie-image">
+        <%= link_to movie_path(movie) do %>
           <!-- Check if the movie has an attached photo, and use the correct image_tag -->
           <% if movie.photo.attached? %>
             <%= image_tag url_for(movie.photo), alt: "Movie Poster", class: "movie-poster" %>
           <% else %>
             <%= image_tag 'default_poster.jpg', alt: "Default Movie Poster", class: "movie-poster" %>
           <% end %>
-          <!-- Like icon positioned within the movie-image container -->
-          <div class="like-icon">
-            <i class="fas fa-heart"></i>
-          </div>
+        <% end %>
+        <!-- Like icon positioned outside the movie-image container -->
+        <div class="like-icon">
+          <i class="fas fa-heart"></i>
         </div>
-        <div class="movie-details">
-          <!-- Date on the left -->
-          <div class="movie-info">
-            <i class="fas fa-calendar-alt"></i>
-            <p><%= movie.end_date.strftime("%B %d, %Y") %></p>
-          </div>
-          <!-- Rating on the right -->
-          <div class="movie-info">
-            <i class="fas fa-star"></i>
-            <p><%= movie.rating %></p>
-          </div>
-        </div>
-        <h3><%= movie.title %></h3>
       </div>
-    <% end %>
-  </main>
-  <!-- Confirm button -->
-  <button class="confirm-button">Confirm Selection</button>
-</body>
-</html>
+      <div class="movie-details">
+        <!-- Date on the left -->
+        <div class="movie-info">
+          <i class="fas fa-calendar-alt"></i>
+          <p><%= movie.end_date.strftime("%B %d, %Y") %></p>
+        </div>
+        <!-- Rating on the right -->
+        <div class="movie-info">
+          <i class="fas fa-star"></i>
+          <p><%= movie.rating %></p>
+        </div>
+      </div>
+      <h3><%= movie.title %></h3>
+    </div>
+  <% end %>
+</main>
 

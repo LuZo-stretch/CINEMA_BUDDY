@@ -24,7 +24,7 @@ joana = User.create!(name: "Joana", email: "joana@gmail.com", age: 35, descripti
 
 puts "Creating movies..."
 harry_potter_file = URI.open("https://media.themoviedb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg")
-harry_potter = Movie.new(title: "Harry Potter and the Philosopher's Stone", synopsis: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.", rating: 4 , trailer: "https://www.imdb.com/video/vi3115057433/?ref_=tt_vi_i_1", end_date: Date.new(2024, 6, 5))
+harry_potter = Movie.new(title: "Harry Potter and the Philosopher's Stone", synopsis: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.", rating: 4 , trailer: "https://youtu.be/VyHV0BRtdxo?feature=shared", end_date: Date.new(2024, 6, 5))
 harry_potter.photo.attach(io: harry_potter_file, filename: "harry_potter.jpg", content_type: "image/jpg")
 harry_potter.save
 
@@ -67,8 +67,6 @@ match_3 = Match.create!(user_id: ana.id, user_match_id: george.id)
 match_4 = Match.create!(user_id: joana.id, user_match_id: lucia.id)
 match_5 = Match.create!(user_id: lucia.id, user_match_id: george.id)
 
-
-puts "Creating movies...."
 
 
 puts "All done!"

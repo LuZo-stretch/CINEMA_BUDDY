@@ -1,4 +1,18 @@
-<% @movies.each do |movie| %>
-<%= cl_image_tag movie.photo.key %>
-<%= movie.title %>
-<% end %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="movie-container">
+  <!-- Like icon container -->
+  <div class="like-icon">
+    <!-- Font Awesome like icon -->
+    <i class="fas fa-heart"></i>
+  </div>
+  <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen></iframe>
+  <div class="movie-details">
+    <h1><%= @movie.title %></h1>
+    <p><%= @movie.synopsis %></p>
+    <div class="ratings-date">
+      <p>Rating: <%= @movie.rating %></p>
+      <p>End Date: <%= @movie.end_date.strftime("%B %d, %Y") %></p>
+    </div>
+  </div>
+</div>
+ <%# <button class="confirm-button">Confirm Selection</button> %>
