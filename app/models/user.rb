@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+  acts_as_favoritor
 
   before_validation :skip_password_validation, on: [:create, :show]
  # before_validation :skip_password_validation, on: :create

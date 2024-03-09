@@ -67,6 +67,4 @@ match_3 = Match.create!(user_id: ana.id, user_match_id: george.id)
 match_4 = Match.create!(user_id: joana.id, user_match_id: lucia.id)
 match_5 = Match.create!(user_id: lucia.id, user_match_id: george.id)
 
-
-
 puts "All done!"

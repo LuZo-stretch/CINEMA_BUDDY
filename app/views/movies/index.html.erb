@@ -1,3 +1,5 @@
+
+<%= render 'shared/navbar' %>
 <main>
   <% @movies.each do |movie| %>
     <div class="movie">
@@ -12,7 +14,11 @@
         <% end %>
         <!-- Like icon positioned outside the movie-image container -->
         <div class="like-icon">
-          <i class="fas fa-heart"></i>
+          <%# <i class="fas fa-heart"></i> %>
+            <a href="#" id="like-button" data-id="<%= movie.id %>">Like</a>
+              <% if  current_user.favorited?(movie) %>
+              <p>liked</p>
+              <% end %>
         </div>
       </div>
       <div class="movie-details">
@@ -32,3 +38,35 @@
   <% end %>
 </main>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.like-button').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default link behavior
+      var movieId = this.dataset.id;
+      var csrfToken = document.querySelector("meta[name=csrf-token]").content;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/movies/' + movieId + '/toggle_favorite', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.setRequestHeader('X-CSRF-Token', csrfToken);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            // Request was successful
+            console.log('Request successful');
+            var likeButton = document.getElementById('like-button');
+            likeButton.classList.toggle('red');
+          } else {
+            // Request failed
+            console.error('Request failed with status:', xhr.status);
+          }
+        }
+      };
+      xhr.send();
+    });
+  });
+});
+</script>
