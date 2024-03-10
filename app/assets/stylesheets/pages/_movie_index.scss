@@ -1,0 +1,110 @@
+.confirm-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #670a0a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  /* Hover effect */
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+  background-color: #341d1d; /* Change color on hover */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black; // Set background to black
+  color: white; // Set text color to white
+}
+
+header {
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column; // Display movie cards vertically
+  align-items: center; // Center movie cards horizontally
+  padding: 20px;
+  overflow-y: auto; // Add vertical scrolling
+  max-height: calc(100vh - 120px); // Adjust the maximum height based on header/footer height
+}
+
+.movie {
+  background-color: #1f1f1f; // Dark background color for movie cards
+  border: 1px solid #333; // Dark border color
+  border-radius: 5px;
+  margin: 10px 0; // Adjust vertical margin
+  padding: 10px;
+  width: 90%; // Adjust width as needed
+  max-width: 300px; // Maximum width for larger screens
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+    .movie-image {
+      position: relative; // Make this a positioning context for the icon
+
+      img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: brightness(80%); // Image is less bright by default
+
+      &:hover {
+      filter: brightness(100%); // Image becomes fully bright on hover
+      cursor: pointer; // Changes the mouse cursor to indicate clickable
+      }
+    }
+    .like-icon {
+      position: absolute;
+      top: 10px; // Adjust to position the icon from the top of the container
+      right: 10px; // Adjust to position the icon from the right of the container
+      font-size: 24px; // Adjust the size of the heart icon as needed
+      color: #791515b7; // Icon color
+      opacity: 0.75; // Make the icon slightly translucent by default
+      &:hover {
+        opacity: 1; // Fully opaque when hovered
+        cursor: pointer;
+        color: #670a0a;
+      }
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+    text-align: center; // Centers the title below the image
+  }
+
+  p {
+    margin: 5px 0;
+  }
+
+  .movie-details {
+    width: 100%; // Set width to match the image
+    display: flex;
+    justify-content: space-between; // Positions date and rating on opposite sides
+    align-items: center;
+    padding: 0 10px; // Adjust padding as needed
+
+    .movie-info {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+
+  }
+}

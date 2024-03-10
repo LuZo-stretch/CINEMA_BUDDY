@@ -11,9 +11,11 @@
     <%= javascript_importmap_tags %>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
   </head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZots9eIwg7w4SfkrikurzfrxXV6XQZpFxxHpbrAGC4Zhv2mfXRC9tE9ERFD9A7" crossorigin="anonymous">
+</head>
+  <body>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+    <%= render "shared/flashes" %>
 
     <%= yield %>
   </body>
