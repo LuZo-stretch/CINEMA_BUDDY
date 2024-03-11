@@ -1,23 +1,31 @@
 <div class="container">
-  <div class="mt-3">
-    <h1>My match list</h1>
-  </div>
   <div class="card-container mt-3">
     <% @users.each do |user| %>
-      <div class="card-product my-2">
-        <div class="card-product-img ms-2">
-          <% if user.photo.attached? %>
-            <%= cl_image_tag user.photo.key %>
-          <% else %>
-            <%= image_tag("default-avatar1.png") %>
-          <% end %>
-        </div>
-
-        <div class="card-product-infos">
-          <h2><%= user.name %>, <%= user.age %></h2>
-          <p><%= user.description %></p>
+      <%= link_to user_path(user), class: "user-card-link" do %>
+        <div class="card-product my-2">
+          <div class="card-product-img ms-2">
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key %>
+            <% else %>
+              <%= image_tag("default-avatar1.png") %>
+            <% end %>
+          </div>
+      <% end %>
+        <div class="d-flex align-items-center">
+          <div class="card-product-infos">
+            <h2 id="user-list"><%= user.name %></h2>
+            <p class="description-limit"><%= user.description %><br>
+              <%= link_to user_path(user), class: "user-card-link" do %>
+              see more...
+              <% end %>
+            </p>
+          </div>
+          <i data-controller="matching" data-matching-user-match-id-value="<%= user.id %>" data-action="click->matching#match" class="fa-solid fa-heart btn" style="position: absolute; right: 20px;"></i>
         </div>
       </div>
     <% end %>
   </div>
+
 </div>
+
+<%# And then add the usual text-decoration: none;  etc to your flat-card-link  CSS %>

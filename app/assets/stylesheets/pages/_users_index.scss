@@ -9,24 +9,39 @@
 
 .card-product img {
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   object-fit: cover;
 }
 
-.card-product h2 {
+#user-list {
+  margin-top: 10px;
+}
+.card-product-infos h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
 }
 
-.card-product p {
+.card-product-infos p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.description-limit {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-product-infos {
+  padding-left: 8px;
+  width: 250px; /* Adjust the width as needed */
+  height: 75px;
+}
+
+.user-card-link {
+  text-decoration: none;
 }

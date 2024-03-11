@@ -1,13 +1,23 @@
 <div class="profile-card">
-  <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
-  <% else %>
-    <%= image_tag("default-avatar1.png", class: 'profile-img') %>
+  <%= link_to users_path, class: "user-card-link" do %>
+    <i class="fa-solid fa-left-long" style="position: absolute; top: 10px; left: 15px;"></i>
   <% end %>
-  <div class="user-container">
-    <h1><%= @user.name %></h1>
-    <p><%= @user.age %></p>
+  <div>
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
+    <% else %>
+      <%= image_tag("default-avatar1.png", class: 'profile-img') %>
+    <% end %>
+    <div class="user-container">
+      <h1><%= @user.name %></h1>
+      <div class="d-flex align-items-center">
+        <p><%= @user.age %></p>
+        <i class="fa-solid fa-heart fa-2xl" style="color: #bebfc1; position: absolute; left: 320px;"></i>
+      </div>
+    </div>
+
   </div>
+
 </div>
 <div class="container mt-3">
   <p><%= @user.description %></p>
