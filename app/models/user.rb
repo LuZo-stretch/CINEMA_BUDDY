@@ -5,4 +5,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+
+  acts_as_favoritor
+
+  private
+
+  def skip_password_validation
+    self.password = Devise.friendly_token[0, 20] if password.blank?
+  end
+
+  protected
+
+  def password_required?
+    new_record? ? false : super
+  end
 end

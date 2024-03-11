@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,4 +14,7 @@ Rails.application.routes.draw do
   resources :movies, only: :show
   resources :matches, only: [:create]
 
+  resources :movies do
+    post 'toggle_favorite', on: :member
+  end
 end

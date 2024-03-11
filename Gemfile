@@ -54,6 +54,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "faker"
 gem "cloudinary"
+gem 'acts_as_favoritor', github: 'jonhue/acts_as_favoritor'
+gem 'meta-tags'
 
 group :development, :test do
   gem "dotenv-rails"

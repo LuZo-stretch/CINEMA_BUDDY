@@ -1,3 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= render "shared/navbar" %>
+<span class="home">
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<div class="intro">
+  <h1>Welcome to Cinema Buddy</h1>
+  <h3>Swipe, chat & share the big screen</h3>
+  <% if current_user %>
+    <%= link_to 'Start now', movies_path, class: 'btn-grad' %>
+  <% else %>
+    <%= link_to 'Register', new_user_session_path, class: 'btn-grad' %>
+  <% end %>
+</div>
+</span>
