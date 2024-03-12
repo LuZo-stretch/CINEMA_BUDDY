@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
   resources :movies, only: :show
-  resources :matches, only: [:create]
+  resources :matches, only: [:create, :show]
 
   resources :movies do
     post 'toggle_favorite', on: :member

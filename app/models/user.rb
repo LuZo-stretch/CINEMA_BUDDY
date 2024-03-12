@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+  has_many :matches
+  has_many :matched_users, through: :matches, source: 'user_match'
 
   acts_as_favoritor
 
