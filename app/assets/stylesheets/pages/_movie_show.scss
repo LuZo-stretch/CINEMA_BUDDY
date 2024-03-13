@@ -76,6 +76,7 @@ iframe {
 }
 
 .like-icon {
+  z-index: 10000s;
   position: absolute;
   top: 10px; // Adjust to position the icon from the top of the container
   right: 10px; // Adjust to position the icon from the right of the container

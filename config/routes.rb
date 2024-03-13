@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
   resources :movies do
-    post 'toggle_favorite', on: :member
+    resources :liked_movies, only: [:create, :destroy]
+    # post 'toggle_favorite', on: :member
   end
 end
