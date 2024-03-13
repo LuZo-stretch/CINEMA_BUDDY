@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :movies do
     post 'toggle_favorite', on: :member
   end
+  resource :profile, only: [:show, :edit, :update]
 end
