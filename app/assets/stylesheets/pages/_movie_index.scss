@@ -19,10 +19,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: black; // Set background to black
+  background-color: rgba(29,29,39,255); // Set background to black
   color: white; // Set text color to white
 }
 
@@ -40,10 +40,11 @@ main {
   padding: 20px;
   overflow-y: auto; // Add vertical scrolling
   max-height: calc(100vh - 120px); // Adjust the maximum height based on header/footer height
+  font-family: 'Montserrat', sans-serif;
 }
 
 .movie {
-  background-color: #1f1f1f; // Dark background color for movie cards
+  background-color: rgba(29,29,39,255); // Dark background color for movie cards
   border: 1px solid #333; // Dark border color
   border-radius: 5px;
   margin: 10px 0; // Adjust vertical margin
@@ -53,6 +54,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Montserrat', sans-serif;
 
     .movie-image {
       position: relative; // Make this a positioning context for the icon
@@ -86,11 +88,13 @@ main {
     justify-content: space-between; // Positions date and rating on opposite sides
     align-items: center;
     padding: 0 10px; // Adjust padding as needed
+    font-family: 'Montserrat', sans-serif;
 
     .movie-info {
       display: flex;
       align-items: center;
       margin: 0;
+      font-family: 'Montserrat', sans-serif;
     }
 
   }

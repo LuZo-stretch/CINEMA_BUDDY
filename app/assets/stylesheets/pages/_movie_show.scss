@@ -3,7 +3,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  background-color: black;
+  background-color: rgba(29,29,39,255);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -76,3 +76,17 @@ iframe {
   background-color: #341d1d; /* Change color on hover */
 }
 
+.like-icon {
+  z-index: 10000s;
+  position: absolute;
+  top: 10px; // Adjust to position the icon from the top of the container
+  right: 10px; // Adjust to position the icon from the right of the container
+  font-size: 24px; // Adjust the size of the heart icon as needed
+  color: #791515b7; // Icon color
+  opacity: 0.75; // Make the icon slightly translucent by default
+  &:hover {
+    opacity: 1; // Fully opaque when hovered
+    cursor: pointer;
+    color: #670a0a;
+  }
+}

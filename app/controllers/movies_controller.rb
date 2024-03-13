@@ -1,9 +1,14 @@
 class MoviesController < ApplicationController
+  require 'open-uri'
+  require 'json'
+
   before_action :authenticate_user!, only: :toggle_favorite
 
   def index
+    # api_url = "https://api-gate2.movieglu.com/"
+    # api_response = URI.open(api_url).read
+    # result = JSON.parse(api_response)
     @movies = Movie.all
-    @movie = Movie.find_by(id: params[:id])
   end
 
   def show
