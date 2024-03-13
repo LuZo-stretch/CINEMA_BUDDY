@@ -13,12 +13,6 @@
           <% end %>
         <% end %>
         <!-- Like icon positioned outside the movie-image container -->
-        <div class="like-icon">
-          <%# <i class="fas fa-heart"></i> %>
-            <a href="#" id="like-button" data-id="<%= movie.id %>">Like</a>
-              <% if  current_user.favorited?(movie) %>
-              <p>liked</p>
-              <% end %>
         </div>
       </div>
       <div class="movie-details">
@@ -36,7 +30,9 @@
       <h3><%= movie.title %></h3>
     </div>
   <% end %>
+<button class="confirm-button">Confirm Selection</button>
 </main>
+
 
 
 
