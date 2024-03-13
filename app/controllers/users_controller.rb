@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    if params[:query].present?
+      @users = @users.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @users }
+    end
   end
 
   def show

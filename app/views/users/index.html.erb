@@ -1,5 +1,9 @@
 <%= render 'shared/navbar' %>
 <div class="container card-container">
+  <%= form_tag users_path, method: :get, remote: true, html: { class: "d-flex", data: { action: "keyup->search-users#update" } } do %>
+  <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a keyword" %>
+  <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+<% end %>
   <% @users.each do |user| %>
     <%= link_to user_path(user), class: "user-card-link" do %>
       <div class="card-product my-2">
