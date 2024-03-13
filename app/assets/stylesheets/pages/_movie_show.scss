@@ -1,6 +1,7 @@
 .movie-container {
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   background-color: black;
   padding: 20px;
@@ -55,36 +56,23 @@ iframe {
   color: #999;
 }
 
-// .confirm-button {
-//   position: fixed;
-//   bottom: 20px;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   background-color: #670a0a;
-//   color: white;
-//   border: none;
-//   padding: 10px 20px;
-//   border-radius: 5px;
-//   cursor: pointer;
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #670a0a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 
-//   /* Hover effect */
-//   transition: background-color 0.3s ease;
-// }
+  /* Hover effect */
+  transition: background-color 0.3s ease;
+}
 
 .confirm-button:hover {
   background-color: #341d1d; /* Change color on hover */
 }
 
-.like-icon {
-  position: absolute;
-  top: 10px; // Adjust to position the icon from the top of the container
-  right: 10px; // Adjust to position the icon from the right of the container
-  font-size: 24px; // Adjust the size of the heart icon as needed
-  color: #791515b7; // Icon color
-  opacity: 0.75; // Make the icon slightly translucent by default
-  &:hover {
-    opacity: 1; // Fully opaque when hovered
-    cursor: pointer;
-    color: #670a0a;
-  }
-}
