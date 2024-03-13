@@ -29,5 +29,4 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:id)
   end
-
 end

@@ -2,14 +2,6 @@
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="movie-container">
   <!-- Like icon container -->
-  <div class="like-icon">
-    <!-- Font Awesome like icon -->
-    <%# <i class="fas fa-heart"></i> %>
-    <a href="#" id="like-button" data-id="<%= @movie.id %>">Like</a>
-    <% if  current_user.favorited?(@movie) %>
-    <p>liked</p>
-    <% end %>
-  </div>
   <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen></iframe>
   <div class="movie-details">
     <h1><%= @movie.title %></h1>
@@ -20,7 +12,7 @@
     </div>
   </div>
 </div>
- <%# <button class="confirm-button">Confirm Selection</button> %>
+<button class="back-button">Go Back</button>
 
 
  <script>
