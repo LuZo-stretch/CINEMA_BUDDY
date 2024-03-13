@@ -10,15 +10,7 @@ class User < ApplicationRecord
 
   acts_as_favoritor
 
-  private
-
-  def skip_password_validation
-    self.password = Devise.friendly_token[0, 20] if password.blank?
-  end
-
-  protected
-
-  def password_required?
-    new_record? ? false : super
+  def matches_with?(user_match)
+    Match.exists?(user_id: id, user_match_id: user_match.id, pending: false)
   end
 end

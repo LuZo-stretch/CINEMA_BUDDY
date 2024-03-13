@@ -7,6 +7,7 @@ export default class extends Controller {
   like() {
     const userId = this.userIdValue;
     console.log('User ID:', userId);
+    this.heartIconTarget.classList.toggle(this.clickedClass);
     // Make an AJAX request to create a match
     fetch("/matches", {
       method: "POST",
@@ -16,17 +17,21 @@ export default class extends Controller {
       },
       body: JSON.stringify({ user_match_id: this.userIdValue }),
     })
-    .then(response => (response.json()))
-    .then(data => {
-      if (data.matched) {
-          // Display a match message
-      alert("It's a match!");
-      window.location.href = `/matches/${data.match_id}`;
-      } else {
-      // Continue on the profiles page
-        window.location.reload(); // Reload the page or handle navigation as needed
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+      return response.json();
     })
+    .then(data => {
+      console.log('data: ', data)
+      if (data.matched) {
+      alert("It's a match!");
+      // window.location.href = `/matches/${data.match_id}`;
+      } else {
+        window.location.reload();
+      }
+    });
   }
 }
 
