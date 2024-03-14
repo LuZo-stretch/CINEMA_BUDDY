@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+  has_many :matches
+  has_many :matched_users, through: :matches, source: 'user_match'
   has_many :liked_movies
   # acts_as_favoritor
 
@@ -13,13 +15,9 @@ class User < ApplicationRecord
 
   private
 
-  def skip_password_validation
-    self.password = Devise.friendly_token[0, 20] if password.blank?
-  end
+  acts_as_favoritor
 
-  protected
-
-  def password_required?
-    new_record? ? false : super
+  def matches_with?(user_match)
+    Match.exists?(user_id: id, user_match_id: user_match.id, pending: false)
   end
 end

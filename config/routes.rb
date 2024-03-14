@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users
+  resources :movies, only: :show
+  resources :matches, only: [:create, :show]
+
   resources :movies do
     resources :liked_movies, only: [:create, :destroy]
     # post 'toggle_favorite', on: :member
