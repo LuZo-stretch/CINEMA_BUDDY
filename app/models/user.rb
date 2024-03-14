@@ -7,6 +7,13 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :matches
   has_many :matched_users, through: :matches, source: 'user_match'
+  has_many :liked_movies
+  # acts_as_favoritor
+
+  before_validation :skip_password_validation, on: [:create, :show]
+ # before_validation :skip_password_validation, on: :create
+
+  private
 
   acts_as_favoritor
 
