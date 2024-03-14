@@ -11,9 +11,8 @@
           <% if user.photo.attached? %>
             <%= cl_image_tag user.photo.key %>
           <% else %>
-            <%# <% random_avatar_number = rand(1..5) %>
-            <%= image_tag("default-avatar1.png") %>
-            <%# <%= image_tag("default-avatar-#{random_avatar_number}.png") %>
+            <% random_avatar_url = "https://picsum.photos/50?random=#{user.id}" %>
+            <%= image_tag random_avatar_url %>
           <% end %>
         </div>
     <% end %>
@@ -27,7 +26,14 @@
           </p>
         </div>
         <%# <i data-controller="matching" data-matching-user-match-id-value="<%= user.id" data-action="click->matching#match" class="fa-solid fa-heart btn" style="color: #bebfc1; position: absolute; right: 20px;"></i> %>
-        <i class="fa-solid fa-heart btn" data-controller="like" data-like-user-id-value="<%= user.id %>" data-action="click->like#like" style="color: #bebfc1; position: absolute; right: 20px;"></i>
+        <i class="fa-solid fa-heart btn heart-btn"
+          data-controller="like"
+          data-like-user-id-value="<%= user.id %>"
+          data-action="click->like#like"
+          data-like-target="heartIcon"
+          style="position: absolute; right: 20px;"
+          data-like-click-class="clicked">
+        </i>
       </div>
     </div>
   <% end %>

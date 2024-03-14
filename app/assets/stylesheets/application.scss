@@ -6,6 +6,7 @@
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
 // Your CSS partials
 @import "components/index";
@@ -16,3 +17,9 @@
 @import "pages/users_index";
 @import "pages/users_show";
 @import "pages/home";
+@import "pages/login";
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color:aliceblue;
+}

@@ -5,7 +5,8 @@
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  border-bottom: 0.7px solid rgba(255, 255, 255, 0.3)
+  border-bottom: 0.7px solid rgba(255, 255, 255, 0.3);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .card-product img {
@@ -48,6 +49,9 @@
   text-decoration: none;
 }
 
-.serach-users {
-
+.heart-btn {
+  color: #bebfc1;
+}
+.clicked {
+  color: #ff0000; /* Change this to the desired color */
 }

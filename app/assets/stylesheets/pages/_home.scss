@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .home {
-  background-image: image-url('test.png');
+  background-image: image-url('home.png');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -8,6 +8,7 @@
   width: 100vw;
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
   color: aliceblue;
 
   display: flex;
@@ -20,4 +21,5 @@
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
