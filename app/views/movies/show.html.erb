@@ -10,9 +10,18 @@
     <p><%= @movie.synopsis %></p>
     <div class="ratings-date">
       <p>Rating: <%= @movie.rating %></p>
+      <div class="like-icon">
+        <%= simple_form_for [@movie, LikedMovie.new] do |f| %>
+          <button type="submit" class="btn text-warning">
+            <i class="fas fa-heart"></i>
+          </button>
+        <% end %>
+        <%= "This was liked" if LikedMovie.find_by(movie_id: @movie.id, user_id: current_user.id) %>
+      </div>
       <%# <p>End Date: <%= @movie.end_date.strftime("%B %d, %Y") %>
     </div>
   </div>
 </div>
-<button class="back-button">Go Back</button>
+<%= link_to "Back to Movies", movies_path, class: 'confirm-button' %>
+ <%# <button class="back-button">Go Back</button> %>
  <%# <button class="confirm-button">Confirm Selection</button> %>

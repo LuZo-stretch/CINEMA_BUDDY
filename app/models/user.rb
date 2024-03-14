@@ -13,9 +13,10 @@ class User < ApplicationRecord
   before_validation :skip_password_validation, on: [:create, :show]
  # before_validation :skip_password_validation, on: :create
 
-  private
+  def skip_password_validation
+  end
 
-  acts_as_favoritor
+  private
 
   def matches_with?(user_match)
     Match.exists?(user_id: id, user_match_id: user_match.id, pending: false)
