@@ -1,24 +1,13 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-
   def index
     @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
-  end
-  
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to user_path(@user), notice: 'Profile created successfully!'
-    else
-      render :new
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
     end
   end
 
