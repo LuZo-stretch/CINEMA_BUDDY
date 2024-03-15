@@ -1,5 +1,11 @@
 <%= render 'shared/navbar' %>
 <div class="container card-container">
+  <%= form_tag users_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query, params[:query], class: "form-control search-form", placeholder: "Search profiles" %>
+    <button type="submit" class="btn" style="position: absolute; right: 40px;">
+      <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
+    </button>
+  <% end %>
   <% @users.each do |user| %>
     <%= link_to user_path(user), class: "user-card-link" do %>
       <div class="card-product my-2">
@@ -12,25 +18,25 @@
           <% end %>
         </div>
     <% end %>
-      <div class="d-flex align-items-center">
-        <div class="card-product-infos">
-          <h2 id="user-list"><%= user.name %></h2>
-          <p class="description-limit"><%= user.description %><br>
-            <%= link_to user_path(user), class: "user-card-link" do %>
-            see more...
-            <% end %>
-          </p>
+        <div class="d-flex align-items-center">
+          <div class="card-product-infos">
+            <h2 id="user-list"><%= user.name %></h2>
+            <p class="description-limit"><%= user.description %><br>
+              <%= link_to user_path(user), class: "user-card-link", style: "color: #ffa2cb;" do %>
+              see more...
+              <% end %>
+            </p>
+          </div>
+          <%# <i data-controller="matching" data-matching-user-match-id-value="<%= user.id" data-action="click->matching#match" class="fa-solid fa-heart btn" style="color: #bebfc1; position: absolute; right: 20px;"></i> %>
+          <i class="fa-solid fa-heart btn heart-btn"
+            data-controller="like"
+            data-like-user-id-value="<%= user.id %>"
+            data-action="click->like#like"
+            data-like-target="heartIcon"
+            style="position: absolute; right: 20px;"
+            data-like-click-class="clicked">
+          </i>
         </div>
-        <%# <i data-controller="matching" data-matching-user-match-id-value="<%= user.id" data-action="click->matching#match" class="fa-solid fa-heart btn" style="color: #bebfc1; position: absolute; right: 20px;"></i> %>
-        <i class="fa-solid fa-heart btn heart-btn"
-          data-controller="like"
-          data-like-user-id-value="<%= user.id %>"
-          data-action="click->like#like"
-          data-like-target="heartIcon"
-          style="position: absolute; right: 20px;"
-          data-like-click-class="clicked">
-        </i>
-      </div>
     </div>
   <% end %>
 </div>
