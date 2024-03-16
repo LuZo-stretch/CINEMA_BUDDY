@@ -1,32 +1,57 @@
 .card-product {
   overflow: hidden;
-  height: 100px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 90px;
+  background: rgba(29,29,39,255);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  border-bottom: 0.7px solid rgba(255, 255, 255, 0.3);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .card-product img {
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   object-fit: cover;
+  padding-left: 5px;
 }
 
-.card-product h2 {
+#user-list {
+  margin-top: 10px;
+}
+.card-product-infos h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
 }
 
-.card-product p {
+.card-product-infos p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.description-limit {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-product-infos {
+  padding-left: 15px;
+  width: 250px; /* Adjust the width as needed */
+  height: 75px;
+}
+
+.user-card-link {
+  text-decoration: none;
+}
+
+.heart-btn {
+  color: #bebfc1;
+}
+.clicked {
+  color: #ff0000; /* Change this to the desired color */
 }

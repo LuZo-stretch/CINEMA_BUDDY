@@ -1,8 +1,9 @@
 .movie-container {
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
-  background-color: black;
+  background-color: rgba(29,29,39,255);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,27 +56,28 @@ iframe {
   color: #999;
 }
 
-// .confirm-button {
-//   position: fixed;
-//   bottom: 20px;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   background-color: #670a0a;
-//   color: white;
-//   border: none;
-//   padding: 10px 20px;
-//   border-radius: 5px;
-//   cursor: pointer;
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #670a0a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 
-//   /* Hover effect */
-//   transition: background-color 0.3s ease;
-// }
+  /* Hover effect */
+  transition: background-color 0.3s ease;
+}
 
 .confirm-button:hover {
   background-color: #341d1d; /* Change color on hover */
 }
 
 .like-icon {
+  z-index: 10000s;
   position: absolute;
   top: 10px; // Adjust to position the icon from the top of the container
   right: 10px; // Adjust to position the icon from the right of the container

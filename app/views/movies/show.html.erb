@@ -1,14 +1,8 @@
-
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="movie-container">
   <!-- Like icon container -->
   <div class="like-icon">
     <!-- Font Awesome like icon -->
     <%# <i class="fas fa-heart"></i> %>
-    <a href="#" id="like-button" data-id="<%= @movie.id %>">Like</a>
-    <% if  current_user.favorited?(@movie) %>
-    <p>liked</p>
-    <% end %>
   </div>
   <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen></iframe>
   <div class="movie-details">
@@ -16,40 +10,18 @@
     <p><%= @movie.synopsis %></p>
     <div class="ratings-date">
       <p>Rating: <%= @movie.rating %></p>
-      <p>End Date: <%= @movie.end_date.strftime("%B %d, %Y") %></p>
+      <div class="like-icon">
+        <%= simple_form_for [@movie, LikedMovie.new] do |f| %>
+          <button type="submit" class="btn text-warning">
+            <i class="fas fa-heart"></i>
+          </button>
+        <% end %>
+        <%= "This was liked" if LikedMovie.find_by(movie_id: @movie.id, user_id: current_user.id) %>
+      </div>
+      <%# <p>End Date: <%= @movie.end_date.strftime("%B %d, %Y") %>
     </div>
   </div>
 </div>
+<%= link_to "Back to Movies", movies_path, class: 'confirm-button' %>
+ <%# <button class="back-button">Go Back</button> %>
  <%# <button class="confirm-button">Confirm Selection</button> %>
-
-
- <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.like-button').forEach(function(button) {
-    button.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent default link behavior
-      var movieId = this.dataset.id;
-      var csrfToken = document.querySelector("meta[name=csrf-token]").content;
-
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/movies/' + movieId + '/toggle_favorite', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.setRequestHeader('X-CSRF-Token', csrfToken);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            // Request was successful
-            console.log('Request successful');
-            var likeButton = document.getElementById('like-button');
-            likeButton.classList.toggle('red');
-          } else {
-            // Request failed
-            console.error('Request failed with status:', xhr.status);
-          }
-        }
-      };
-      xhr.send();
-    });
-  });
-});
-</script>

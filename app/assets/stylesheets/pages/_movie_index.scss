@@ -1,17 +1,22 @@
 .confirm-button {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #670a0a;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  // left: 50%;
+  // transform: translateX(-50%);
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 15px 20px;
+  // border-radius: 5px;
   cursor: pointer;
 
   /* Hover effect */
   transition: background-color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
 .confirm-button:hover {
@@ -19,10 +24,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: black; // Set background to black
+  background-color: rgba(29,29,39,255); // Set background to black
   color: white; // Set text color to white
 }
 
@@ -40,10 +45,11 @@ main {
   padding: 20px;
   overflow-y: auto; // Add vertical scrolling
   max-height: calc(100vh - 120px); // Adjust the maximum height based on header/footer height
+  font-family: 'Montserrat', sans-serif;
 }
 
 .movie {
-  background-color: #1f1f1f; // Dark background color for movie cards
+  background-color: rgba(29,29,39,255); // Dark background color for movie cards
   border: 1px solid #333; // Dark border color
   border-radius: 5px;
   margin: 10px 0; // Adjust vertical margin
@@ -53,6 +59,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Montserrat', sans-serif;
 
     .movie-image {
       position: relative; // Make this a positioning context for the icon
@@ -67,19 +74,6 @@ main {
       &:hover {
       filter: brightness(100%); // Image becomes fully bright on hover
       cursor: pointer; // Changes the mouse cursor to indicate clickable
-      }
-    }
-    .like-icon {
-      position: absolute;
-      top: 10px; // Adjust to position the icon from the top of the container
-      right: 10px; // Adjust to position the icon from the right of the container
-      font-size: 24px; // Adjust the size of the heart icon as needed
-      color: #791515b7; // Icon color
-      opacity: 0.75; // Make the icon slightly translucent by default
-      &:hover {
-        opacity: 1; // Fully opaque when hovered
-        cursor: pointer;
-        color: #670a0a;
       }
     }
   }
@@ -99,11 +93,13 @@ main {
     justify-content: space-between; // Positions date and rating on opposite sides
     align-items: center;
     padding: 0 10px; // Adjust padding as needed
+    font-family: 'Montserrat', sans-serif;
 
     .movie-info {
       display: flex;
       align-items: center;
       margin: 0;
+      font-family: 'Montserrat', sans-serif;
     }
 
   }

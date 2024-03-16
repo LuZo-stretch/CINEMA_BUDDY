@@ -1,6 +1,6 @@
 
   .btn-grad {
-  background-image: linear-gradient(to right, #F00000 0%, #DC281E  51%, #F00000  100%);
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
   margin: 10px auto;
   padding: 15px 10px;
   width: 150px;
@@ -9,8 +9,8 @@
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 20px;
+  // box-shadow: 0 0 20px #eee;
+  border-radius: 25px;
   display: block;
   text-decoration: none;
 }
@@ -19,4 +19,13 @@
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
+}
+
+.log-in {
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  font-size: 17px;
 }
