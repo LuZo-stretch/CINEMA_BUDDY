@@ -16,8 +16,13 @@ class User < ApplicationRecord
   def skip_password_validation
   end
 
-  def matches_with?(user_match)
-    # users that i started a match and is pending                              the other user makes me like and the pending is true
-    Match.exists?(user_id: id, user_match_id: user_match.id, pending: true) || Match.exists?(user_id: user_match.id, user_match_id: id, pending: true)
+  def liked_me?(user_match)
+    # the other user likes me and the pending is true
+    Match.exists?(user_id: user_match.id, user_match_id: id, pending: true)
+  end
+
+  def liked_me_back?(user_match)
+    # users that i started a match and is pending
+    Match.exists?(user_id: id, user_match_id: user_match.id, pending: true)
   end
 end

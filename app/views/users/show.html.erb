@@ -1,7 +1,11 @@
   <div class="profile-card">
-    <%= link_to users_path, class: "user-card-link", style: "color: #ffffff;" do %>
-      <i class="fa-solid fa-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
-    <% end %>
+    <div class="row">
+      <i class="fa-solid fa-heart fa-2xl" style="color: #bebfc1; position: absolute; top: 50px; left: 310px;"></i>
+      <%= link_to users_path, class: "user-card-link", style: "color: #ffffff;" do %>
+        <i class="fa-solid fa-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
+      <% end %>
+    </div>
+
     <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
     <% else %>
@@ -17,6 +21,7 @@
     </div>
   </div>
   <div class="container mt-3">
+    <p style="border: solid 1px; ">Description</p>
     <p style="color: #bebfc1; padding: 10px; line-height: 1.8;"><%= @user.description %></p>
   </div>
   <div class="container likes-movies">
