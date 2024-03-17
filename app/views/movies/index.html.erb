@@ -14,13 +14,14 @@
             <% end %>
           <% end %>
           <!-- Like icon positioned outside the movie-image container -->
-          <div class="like-icon">
-            <%= simple_form_for [movie, LikedMovie.new] do |f| %>
-              <button type="submit" class="btn text-warning">
-                <i class="fas fa-heart"></i>
-              </button>
-            <% end %>
-            <%= "This was liked" if LikedMovie.find_by(movie_id: movie.id, user_id: current_user.id) %>
+          <div data-controller="like-movies">
+            <div class="like-icon">
+              <%# <%= simple_form_for [movie, LikedMovie.new] do |f| %>
+                <%# <button type="submit" class="btn text-warning"> %>
+                  <%# <i class="fas fa-heart"></i> %>
+                <%# </button> %>
+              <%# <% end %>
+            </div>
           </div>
         </div>
         <div class="movie-details">
