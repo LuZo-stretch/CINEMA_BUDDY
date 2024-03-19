@@ -58,7 +58,7 @@
 }
 
 .container h2 {
-  margin-top: 70px;
+  margin-top: 40px;
 }
 
 .cards {
@@ -79,6 +79,15 @@
   background-size: cover;
   background-position: center;
   border-radius: 7%;
+}
+
+.btn-description {
+  border-radius: 7px;
+  color: white;
+  font-size: 13px;
+  padding: 7px;
+  background-color: rgba(0, 0, 0, 0.58);
+  border: 0;
 }
 
 .likes-movies {

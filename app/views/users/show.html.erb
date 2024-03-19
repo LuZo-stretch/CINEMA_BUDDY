@@ -1,6 +1,5 @@
   <div class="profile-card">
     <div class="row">
-      <i class="fa-solid fa-heart fa-2xl" style="color: #bebfc1; position: absolute; top: 50px; left: 310px;"></i>
       <%= link_to users_path, class: "user-card-link", style: "color: #ffffff;" do %>
         <i class="fa-solid fa-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
       <% end %>
@@ -12,17 +11,23 @@
       <% random_avatar_url = "https://picsum.photos/500/500?random" %>
       <%= image_tag random_avatar_url, class: 'profile-img' %>
     <% end %>
-    <div class="user-container" style="position: absolute; bottom: 5px">
+    <div class="user-container" style="position: absolute;">
       <h1 style="font-size: 50px;"><%= @user.name %></h1>
-      <div class="d-flex align-items-center">
+      <div class="d-flex">
         <p style="font-size: 30px;"><%= @user.age %></p>
-        <i class="fa-solid fa-heart fa-2xl" style="color: #bebfc1; position: absolute; left: 320px;"></i>
+        <i class="fa-solid fa-heart fa-3x"
+          style="position: absolute; left: 300px; top: 65px;"
+          data-controller="like"
+          data-like-user-id-value="<%= @user.id %>"
+          data-action="click->like#like"
+          data-like-target="heartIcon">
+        </i>
       </div>
     </div>
   </div>
-  <div class="container mt-3">
-    <p style="border: solid 1px; ">Description</p>
-    <p style="color: #bebfc1; padding: 10px; line-height: 1.8;"><%= @user.description %></p>
+  <div class="container mt-3" data-controller="user-description">
+    <button class="btn btn-description" data-action="click->user-description#hideContent">Description</button>
+    <p data-user-description-target="content" style="color: #bebfc1; padding: 10px; line-height: 1.8;"><%= @user.description %></p>
   </div>
   <div class="container likes-movies">
     <h2>Liked Movies</h2>

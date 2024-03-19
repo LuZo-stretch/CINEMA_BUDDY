@@ -3,6 +3,7 @@
   border-radius: 20px;
   border: 0;
   margin: 0px 20px;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .search-form::placeholder {
@@ -63,9 +64,10 @@
   text-decoration: none;
 }
 
-.heart-btn {
+.fa-heart {
   color: #bebfc1;
 }
-.clicked {
-  color: #ff0000; /* Change this to the desired color */
+
+.heart-red {
+  color: red !important;
 }
