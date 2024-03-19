@@ -8,6 +8,7 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
+
 // Your CSS partials
 @import "components/index";
 @import "components/buttons";
@@ -18,6 +19,7 @@
 @import "pages/users_show";
 @import "pages/home";
 @import "pages/login";
+@import "pages/sweetalert";
 @import "pages/profile";
 
 body {
