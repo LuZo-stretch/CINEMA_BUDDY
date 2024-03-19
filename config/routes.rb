@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
+  get 'profile', to: 'pages#profile', as: 'profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,10 +13,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users
-  resources :movies, only: :show
   resources :matches, only: [:create, :show]
 
-  resources :movies do
+  resources :movies, only: [:index, :show] do
     resources :liked_movies, only: [:create, :destroy]
     # post 'toggle_favorite', on: :member
   end
