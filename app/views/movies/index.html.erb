@@ -1,5 +1,13 @@
-
 <%= render 'shared/navbar' %>
+<div>
+  <%= form_tag movies_path, method: :get, class: "d-flex mt-3 mb-3" do %>
+  <%= text_field_tag :query, params[:query], class: "form-control search-form", placeholder: "Search movies" %>
+  <button type="submit" class="btn" style="position: absolute; right: 40px;">
+    <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
+  </button>
+  <% end %>
+</div>
+
 <main>
   <% if @movies.present? %>
     <% @movies.each do |movie| %>
@@ -39,12 +47,10 @@
             <p><%= movie.rating %></p>
           </div>
         </div>
-        <h3><%= movie.title %></h3>
       </div>
     <% end %>
   <% else %>
-  <p>No movies available</p>
+    <p>No movies available</p>
   <% end %>
   <%= link_to "Confirm Selection", users_path, class: 'confirm-button' %>
-<%# <button class="confirm-button">Confirm Selection</button> %>
 </main>
