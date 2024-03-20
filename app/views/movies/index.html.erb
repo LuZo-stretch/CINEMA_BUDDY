@@ -1,9 +1,27 @@
-
 <%= render 'shared/navbar' %>
+<div>
+  <%= form_tag movies_path, method: :get, class: "d-flex mt-3 mb-3" do %>
+  <%= text_field_tag :query, params[:query], class: "form-control search-form", placeholder: "Search movies" %>
+  <button type="submit" class="btn" style="position: absolute; right: 40px;">
+    <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
+  </button>
+  <% end %>
+</div>
+
 <main>
   <% if @movies.present? %>
     <% @movies.each do |movie| %>
       <div class="movie">
+        <h4><%= movie.title %></h4>
+        <!-- Like icon positioned outside the movie-image container -->
+        <div class="like-icon">
+          <%= simple_form_for [movie, LikedMovie.new] do |f| %>
+            <button type="submit" class="btn text-warning">
+              <i class="fas fa-heart"></i>
+            </button>
+          <% end %>
+          <%= "This was liked" if LikedMovie.find_by(movie_id: movie.id, user_id: current_user.id) %>
+        </div>
         <div class="movie-image">
           <%= link_to movie_path(movie) do %>
             <!-- Check if the movie has an attached photo, and use the correct image_tag -->
@@ -13,15 +31,6 @@
               <%= image_tag 'home.png', alt: "Default Movie Poster", class: "movie-poster" %>
             <% end %>
           <% end %>
-          <!-- Like icon positioned outside the movie-image container -->
-          <div class="like-icon">
-            <%= simple_form_for [movie, LikedMovie.new] do |f| %>
-              <button type="submit" class="btn text-warning">
-                <i class="fas fa-heart"></i>
-              </button>
-            <% end %>
-            <%= "This was liked" if LikedMovie.find_by(movie_id: movie.id, user_id: current_user.id) %>
-          </div>
         </div>
         <div class="movie-details">
           <!-- Date on the left -->
@@ -35,12 +44,11 @@
             <p><%= movie.rating %></p>
           </div>
         </div>
-        <h3><%= movie.title %></h3>
       </div>
     <% end %>
   <% else %>
-  <p>No movies available</p>
+    <p>No movies available</p>
   <% end %>
   <%= link_to "Confirm Selection", users_path, class: 'confirm-button' %>
-<%# <button class="confirm-button">Confirm Selection</button> %>
+  <%= javascript_include_tag 'like-button', 'data-turbolinks-track': 'reload' %>
 </main>

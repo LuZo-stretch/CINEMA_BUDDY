@@ -4,7 +4,21 @@
     <!-- Font Awesome like icon -->
     <%# <i class="fas fa-heart"></i> %>
   </div>
-  <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen></iframe>
+ <% if @movie.trailer.present? %>
+  <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen muted allow="autoplay"></iframe>
+  <% else %>
+    <!-- If movie trailer is not available, display the movie image -->
+    <div class="movie-image">
+      <%= link_to movie_path(@movie) do %>
+        <% if @movie.photo_url.present? %>
+          <%= image_tag @movie.photo_url, alt: "Movie Poster", class: "movie-poster" %>
+        <% else %>
+          <%= image_tag 'home.png', alt: "Default Movie Poster", class: "movie-poster" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="movie-details">
     <h1><%= @movie.title %></h1>
     <p><%= @movie.synopsis %></p>
@@ -23,5 +37,7 @@
   </div>
 </div>
 <%= link_to "Back to Movies", movies_path, class: 'confirm-button' %>
+<%= javascript_include_tag 'like-button', 'data-turbolinks-track': 'reload' %>
+
  <%# <button class="back-button">Go Back</button> %>
  <%# <button class="confirm-button">Confirm Selection</button> %>
