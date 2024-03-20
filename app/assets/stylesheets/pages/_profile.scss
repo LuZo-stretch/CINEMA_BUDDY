@@ -1,31 +1,42 @@
 .my-profile-heading {
-    text-align: center;
-    font-size: 2em;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-.fa-left-long-icon {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-  }
-  
-  .user-container {
-    position: absolute;
-    bottom: 50px;
-  }
+  text-align: center;
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
-  .profile-img {
-    width: 100%; // Example property
-    height: auto; // Example property
-  }
-  
-  
+.fa-left-long-icon {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.user-container {
+  position: absolute;
+  bottom: 50px;
+}
+
+.profile-img {
+  width: 100%; 
+  height: auto; 
+}
+
 .user-info {
-    padding: 20px; // Example property
-  }
-  
-  .user-details {
-    display: flex;
-    align-items: center;
-  }
+  padding: 20px;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+
+.edit-profile-btn {
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%);
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  font-size: 17px;
+  padding: 10px 20px;
+  display: inline-block; 
+}
