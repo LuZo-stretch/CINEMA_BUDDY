@@ -12,16 +12,6 @@
   <% if @movies.present? %>
     <% @movies.each do |movie| %>
       <div class="movie">
-        <h4><%= movie.title %></h4>
-        <!-- Like icon positioned outside the movie-image container -->
-        <div class="like-icon">
-          <%= simple_form_for [movie, LikedMovie.new] do |f| %>
-            <button type="submit" class="btn text-warning">
-              <i class="fas fa-heart"></i>
-            </button>
-          <% end %>
-          <%= "This was liked" if LikedMovie.find_by(movie_id: movie.id, user_id: current_user.id) %>
-        </div>
         <div class="movie-image">
           <%= link_to movie_path(movie) do %>
             <!-- Check if the movie has an attached photo, and use the correct image_tag -->
@@ -31,6 +21,19 @@
               <%= image_tag 'home.png', alt: "Default Movie Poster", class: "movie-poster" %>
             <% end %>
           <% end %>
+          <!-- Like icon positioned outside the movie-image container -->
+             <div data-controller="like-movies"
+                data-like-movies-movie-id-value="<%= movie.id %>"
+                data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: movie.id) %>">
+              <div class="like-icon" data-action="click->like-movies#toggle">
+                <i class="<%= current_user.liked_movies.exists?(movie_id: movie.id) ? 'fas' : 'far' %> fa-heart"></i>
+                <%# <%= simple_form_for [movie, LikedMovie.new] do |f| %>
+                  <%# <button type="submit" class="btn text-warning"> %>
+                    <%# <i class="fas fa-heart"></i> %>
+                  <%# </button> %>
+                <%# <% end %>
+              </div>
+          </div>
         </div>
         <div class="movie-details">
           <!-- Date on the left -->
@@ -50,5 +53,4 @@
     <p>No movies available</p>
   <% end %>
   <%= link_to "Confirm Selection", users_path, class: 'confirm-button' %>
-  <%= javascript_include_tag 'like-button', 'data-turbolinks-track': 'reload' %>
 </main>

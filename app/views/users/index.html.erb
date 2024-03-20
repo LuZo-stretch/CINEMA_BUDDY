@@ -27,14 +27,12 @@
               <% end %>
             </p>
           </div>
-          <%# <i data-controller="matching" data-matching-user-match-id-value="<%= user.id" data-action="click->matching#match" class="fa-solid fa-heart btn" style="color: #bebfc1; position: absolute; right: 20px;"></i> %>
-          <i class="fa-solid fa-heart btn heart-btn"
+          <i class="fa-solid fa-heart heart-btn btn"
             data-controller="like"
             data-like-user-id-value="<%= user.id %>"
             data-action="click->like#like"
             data-like-target="heartIcon"
-            style="position: absolute; right: 20px;"
-            data-like-click-class="clicked">
+            style="position: absolute; right: 20px;">
           </i>
         </div>
     </div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="my-profile-heading">My Profile</h1>
+  <div class="profile-card">
+    <%= link_to users_path, class: "user-card-link" do %>
+      <i class="fa-solid fa-left-long" style="position: absolute; top: 10px; left: 15px;"></i>
+    <% end %>
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
+    <% else %>
+      <%= image_tag("default-avatar1.png", class: 'profile-img') %>
+    <% end %>
+    <div class="user-container" style="position: absolute; bottom: 50px">
+      <h2><%= @user.name %></h2> 
+      <div class="d-flex align-items-center">
+        <p><%= @user.age %></p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <p><%= @user.description %></p>
+  </div>
+  <div class="container">
+    <h2>Liked Movies</h2>
+    <div class="cards row col-12 mt-4">
+    </div>
+  </div>
+</div>
+<%= link_to 'Edit My Profile', edit_user_path(@user), class: "btn btn-primary" %>

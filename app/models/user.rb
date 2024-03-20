@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
   has_one_attached :photo
   has_many :matches
   has_many :matched_users, through: :matches, source: 'user_match'
   has_many :liked_movies
   # acts_as_favoritor
+  has_one :profile
 
   before_validation :skip_password_validation, on: [:create, :show]
  # before_validation :skip_password_validation, on: :create
@@ -16,9 +16,13 @@ class User < ApplicationRecord
   def skip_password_validation
   end
 
-  private
+  def liked_me?(user_match)
+    # the other user likes me and the pending is true
+    Match.exists?(user_id: user_match.id, user_match_id: id, pending: true)
+  end
 
-  def matches_with?(user_match)
-    Match.exists?(user_id: id, user_match_id: user_match.id, pending: false)
+  def liked_me_back?(user_match)
+    # users that i started a match and is pending
+    Match.exists?(user_id: id, user_match_id: user_match.id, pending: true)
   end
 end

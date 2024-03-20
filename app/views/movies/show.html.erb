@@ -1,12 +1,8 @@
 <div class="movie-container">
   <!-- Like icon container -->
-  <div class="like-icon">
-    <!-- Font Awesome like icon -->
-    <%# <i class="fas fa-heart"></i> %>
-  </div>
- <% if @movie.trailer.present? %>
-  <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen muted allow="autoplay"></iframe>
-  <% else %>
+    <% if @movie.trailer.present? %>
+    <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen muted allow="autoplay"></iframe>
+    <% else %>
     <!-- If movie trailer is not available, display the movie image -->
     <div class="movie-image">
       <%= link_to movie_path(@movie) do %>
@@ -17,27 +13,31 @@
         <% end %>
       <% end %>
     </div>
-  <% end %>
+    <% end %>
 
+   <div data-controller="like-movies"
+            data-like-movies-movie-id-value="<%= @movie.id %>"
+            data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: @movie.id) %>">
+          <div class="like-icon" data-action="click->like-movies#toggle">
+            <i class="<%= current_user.liked_movies.exists?(movie_id: @movie.id) ? 'fas' : 'far' %> fa-heart"></i>
+            <%# <%= simple_form_for [movie, LikedMovie.new] do |f| %>
+              <%# <button type="submit" class="btn text-warning"> %>
+                <%# <i class="fas fa-heart"></i> %>
+              <%# </button> %>
+            <%# <% end %>
+          </div>
+      </div>
+  <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen></iframe>
   <div class="movie-details">
     <h1><%= @movie.title %></h1>
     <p><%= @movie.synopsis %></p>
     <div class="ratings-date">
       <p>Rating: <%= @movie.rating %></p>
-      <div class="like-icon">
-        <%= simple_form_for [@movie, LikedMovie.new] do |f| %>
-          <button type="submit" class="btn text-warning">
-            <i class="fas fa-heart"></i>
-          </button>
-        <% end %>
-        <%= "This was liked" if LikedMovie.find_by(movie_id: @movie.id, user_id: current_user.id) %>
-      </div>
       <%# <p>End Date: <%= @movie.end_date.strftime("%B %d, %Y") %>
     </div>
   </div>
 </div>
 <%= link_to "Back to Movies", movies_path, class: 'confirm-button' %>
-<%= javascript_include_tag 'like-button', 'data-turbolinks-track': 'reload' %>
 
  <%# <button class="back-button">Go Back</button> %>
  <%# <button class="confirm-button">Confirm Selection</button> %>
