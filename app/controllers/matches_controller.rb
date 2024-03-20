@@ -27,5 +27,6 @@ class MatchesController < ApplicationController
   def destroy
     @match = Match.find(params[:id])
     @match.destroy
+    head :ok
   end
 end
