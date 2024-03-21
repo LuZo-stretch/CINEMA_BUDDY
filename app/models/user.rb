@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :liked_movies
   # acts_as_favoritor
   has_one :profile
+  has_many :chats
 
   before_validation :skip_password_validation, on: [:create, :show]
  # before_validation :skip_password_validation, on: :create

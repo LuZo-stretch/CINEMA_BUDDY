@@ -21,4 +21,8 @@ Rails.application.routes.draw do
     resources :liked_movies, only: [:create, :destroy]
     # post 'toggle_favorite', on: :member
   end
+
+  resources :chats, only: :show
+    resources :messages, only: :create
+
 end
