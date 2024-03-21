@@ -4,31 +4,22 @@
   left: 0;
   right: 0;
   width: 100%;
-  // left: 50%;
-  // transform: translateX(-50%);
   background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
   color: white;
   border: none;
   padding: 15px 20px;
-  // border-radius: 5px;
   cursor: pointer;
-
-  /* Hover effect */
   transition: background-color 0.3s ease;
   text-decoration: none;
   text-align: center;
-}
-
-.confirm-button:hover {
-  background-color: #341d1d; /* Change color on hover */
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: rgba(29,29,39,255); // Set background to black
-  color: white; // Set text color to white
+  background-color: rgba(29,29,39,255);
+  color: white;
 }
 
 header {
@@ -40,59 +31,64 @@ header {
 
 main {
   display: flex;
-  flex-direction: column; // Display movie cards vertically
-  align-items: center; // Center movie cards horizontally
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  overflow-y: auto; // Add vertical scrolling
-  max-height: calc(100vh - 120px); // Adjust the maximum height based on header/footer height
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
   font-family: 'Montserrat', sans-serif;
 }
 
 .movie {
-  background-color: rgba(29,29,39,255); // Dark background color for movie cards
-  border: 1px solid #333; // Dark border color
+  background-color: rgba(29,29,39,255);
   border-radius: 5px;
-  margin: 10px 0; // Adjust vertical margin
+  margin: 10px 0;
   padding: 10px;
-  width: 90%; // Adjust width as needed
-  max-width: 300px; // Maximum width for larger screens
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* Position relative for absolute positioning of like button */
   font-family: 'Montserrat', sans-serif;
+  border-top: 1px transparent solid;
+  border-left: 1px transparent solid;
+  border-right: 1px transparent solid;
+  border-bottom: .5px solid #373741;
 
-    .movie-image {
-      position: relative; // Make this a positioning context for the icon
+  .movie-image {
+    position: relative;
 
-      img {
-      max-width: 100%;
+    img {
+      max-width: 300%;
       height: auto;
       display: block;
       margin: 0 auto;
-      filter: brightness(80%); // Image is less bright by default
+      filter: brightness(80%);
 
       &:hover {
-      filter: brightness(100%); // Image becomes fully bright on hover
-      cursor: pointer; // Changes the mouse cursor to indicate clickable
+        filter: brightness(104%);
+        cursor: pointer;
       }
     }
   }
 
   h3 {
     margin-top: 0;
-    text-align: center; // Centers the title below the image
+    text-align: center;
+    padding-top: 10px; /* Add padding to create space for the like button */
   }
 
   p {
-    margin: 5px 0;
+    margin: 0px 0;
+    padding-top: 2px;
   }
 
   .movie-details {
-    width: 100%; // Set width to match the image
+    width: 100%;
     display: flex;
-    justify-content: space-between; // Positions date and rating on opposite sides
+    justify-content: space-between;
     align-items: center;
-    padding: 0 10px; // Adjust padding as needed
+    padding: 0 10px;
     font-family: 'Montserrat', sans-serif;
 
     .movie-info {
@@ -101,6 +97,23 @@ main {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
     }
+  }
 
+  .like-icon {
+    position: absolute;
+    bottom: 5px; /* Adjust bottom position for space */
+    right: 10px; /* Adjust right position for space */
+  }
+
+  .movie .like-icon button.btn.text-warning {
+    background-color: transparent; /* Set background color to transparent */
+    border: none; /* Remove default border */
+    /* Add any additional styling you want */
+  }
+
+  /* Styling for the heart icon when clicked */
+  .like-clicked i.fa-heart {
+    color: white; /* Change the color to white for better visibility */
+    background-image: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%);
   }
 }
