@@ -26,4 +26,13 @@ class User < ApplicationRecord
     # users that i started a match and is pending
     Match.exists?(user_id: id, user_match_id: user_match.id, pending: true)
   end
+
+  def get_match_id(user_match)
+    if liked_me?(user_match)
+      return Match.find_by(user_id: user_match.id, user_match_id: id).id
+    elsif liked_me_back?(user_match)
+      return Match.find_by(user_id: id, user_match_id: user_match.id).id
+    end
+    return false
+  end
 end
