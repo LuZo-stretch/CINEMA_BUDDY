@@ -19,7 +19,7 @@ results = URI.open("https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
   "territory" => "XX",
   "api-version" => "v200",
   "geolocation" => "-22.0;14.0",
-  "device-datetime" => "2024-03-20T18:47:00.000Z").read
+  "device-datetime" => "2024-03-21T18:47:00.000Z").read
 movies = JSON.parse(results)
 
 movies["films"].each do |movie_data|
