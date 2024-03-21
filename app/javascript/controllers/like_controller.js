@@ -5,13 +5,9 @@ export default class extends Controller {
   static targets = ["heartIcon"];
   static values = {matchId: Number, userId: Number, match: Boolean};
 
-  connect() {
-    this.updateIcon();
-  }
-
   toggle(event) {
-    event.preventDefault();
-    console.log("liked Value:", this.matchValue)
+  event.preventDefault();
+  console.log("liked Value:", this.matchValue)
     if (this.matchValue) {
       this.unlike();
     } else {
@@ -32,73 +28,71 @@ export default class extends Controller {
       },
       body: JSON.stringify({ match: this.userIdValue }),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-   .then((data) => {
-      // this.likedId = data.liked_id
-      this.matchValue = true;
-      this.updateIcon();
 
-      console.log('data: ', data)
-      if (data.matched) {
-        // alert("It's a match!");
-        Swal.fire({
-          title: "<strong>You Matched!</strong>",
-          html: `
-            Start <b>chating</b>?
-          `,
-          showCloseButton: true,
-          showCancelButton: true,
-          focusConfirm: false,
-          confirmButtonText: `
-            <i class="fa fa-thumbs-up"></i> Chat now!
-          `,
-          confirmButtonAriaLabel: "Thumbs up, yes!",
-          cancelButtonText: `
-            <i class="fa fa-thumbs-down"></i> Later
-          `,
-          cancelButtonAriaLabel: "Thumbs down, later"
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-          // Redirect to a certain page
-            window.location.href = "/movies"; // Change "/chat" to the URL of your chat page
+      .then( response => response.json())
+      .then((data) => {
+          // this.likedId = data.liked_id
+
+          this.matchValue = true;
+          this.updateIcon(data);
+
+          console.log('data: ', data)
+          if (data.matched) {
+            // alert("It's a match!");
+            Swal.fire({
+              title: "<strong>You Matched!</strong>",
+              html: `
+                Start <b>chating</b>?
+              `,
+              showCloseButton: true,
+              showCancelButton: true,
+              focusConfirm: false,
+              confirmButtonText: `
+                <i class="fa fa-thumbs-up"></i> Chat now!
+              `,
+              confirmButtonAriaLabel: "Thumbs up, yes!",
+              cancelButtonText: `
+                <i class="fa fa-thumbs-down"></i> Later
+              `,
+              cancelButtonAriaLabel: "Thumbs down, later"
+            })
+            .then((result) => {
+              if (result.isConfirmed) {
+              // Redirect to a certain page
+                window.location.href = "/movies"; // Change "/chat" to the URL of your chat page
+              }
+            })
           }
-        })
-      }
-    })
+        });
   }
 
   unlike() {
     console.log('Match ID unlike:', this.matchIdValue);
-    fetch(`/matches/${this.matchIdValue}`, {
-      method: "DELETE",
+    fetch(`/matches`, {
+      method: "POST",
       headers: {
         "X-CSRF-Token": this.getMetaValue("csrf-token"),
-        "Content-Type": "application/json"
-      }
-    }).then(response => {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ match: this.userIdValue }),
+    })
+    .then(response => {
       if(response.ok) {
         this.matchValue = false;
-        this.updateIcon();
+        return response.json()
       }
-    });
+    })
+    .then((data) => {
+      this.updateIcon(data);
+    })
+
   }
 
-  updateIcon() {
-    const icon = this.element.querySelector('.fa-heart');
-    if (icon) {
-      if (this.matchValue) {
-        icon.classList.remove('fa-heart');
-        icon.classList.add('heart-red');
-      } else {
-        icon.classList.remove('heart-red');
-        icon.classList.add('fa-heart');
-      }
+  updateIcon(data) {
+    const heartIcon = document.getElementById(`heart-${this.userIdValue}`)
+    if (heartIcon) {
+      heartIcon.innerHTML = data.icon
     }
   }
 

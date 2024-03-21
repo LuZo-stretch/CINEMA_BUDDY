@@ -1,5 +1,6 @@
 <%= render 'shared/navbar' %>
 <div class="container card-container">
+  <%= render 'shared/modal' %>
   <%= form_tag users_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query, params[:query], class: "form-control search-form", placeholder: "Search profiles" %>
     <button type="submit" class="btn" style="position: absolute; right: 40px;">
@@ -27,10 +28,23 @@
               <% end %>
             </p>
           </div>
-          <%= render 'matches/heart', user: user %>
+          <%# <i class="fa-solid fa-heart heart-btn btn"
+            data-controller="like"
+            <%# data-like-user-id-value="<%=# user.id %>
+            <%# data-action="click->like#like" %>
+            <%# data-like-target="heartIcon" %>
+            <%# style="position: absolute; right: 20px;"> %>
+          <%# </i> %>
+          <i class="fa-solid fa-heart btn <%= current_user.liked_me_back?(user) ? ' heart-red' : 'fa-heart' %>"
+            data-controller="like"
+            data-like-match-id-value="<%= current_user.get_match_id(user) %>"
+            data-like-match-value="<%= current_user.liked_me_back?(user) %>"
+            data-like-user-id-value="<%= user.id %>"
+            data-action="click->like#toggle"
+            data-like-target="heartIcon"
+            style="position: absolute; right: 10px;">
+          </i>
         </div>
     </div>
   <% end %>
 </div>
-
-<%# And then add the usual text-decoration: none;  etc to your flat-card-link  CSS %>

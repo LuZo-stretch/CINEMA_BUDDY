@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :users
   resources :matches
 
+  get '/faker', to: 'faker#index'
+
   resources :movies, only: [:index, :show] do
     resources :liked_movies, only: [:create, :destroy]
     # post 'toggle_favorite', on: :member
