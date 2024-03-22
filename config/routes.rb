@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     # post 'toggle_favorite', on: :member
   end
 
-  resources :chats, only: :show
+  resources :chats, only: [:index, :show] do
     resources :messages, only: :create
-
+  end
 end
