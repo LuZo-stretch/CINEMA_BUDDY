@@ -21,14 +21,16 @@
   align-items: center;
   border-bottom: 0.7px solid rgba(255, 255, 255, 0.3);
   font-family: 'Montserrat', sans-serif;
+  margin-left: 10px
 }
 
 .card-product img {
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  // height: 50px;
+  // width: 50px;
   object-fit: cover;
   padding-left: 5px;
+  padding-right: 5px
 }
 
 
@@ -69,5 +71,18 @@
 }
 
 .heart-red {
-  color: red !important;
+  color: #f267c9 !important;
+}
+
+.modal {
+  --bs-modal-bg: #1f262ddb !important;
+}
+
+.swal2-popup {
+  background: #1f262ddb !important;
+  color: #F0F8FF !important;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: #9d327d !important;
 }
