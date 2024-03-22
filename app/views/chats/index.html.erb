@@ -1,0 +1,10 @@
+<% @chats.each do |chat| %>
+  <% if chat.match.user == current_user %>
+  <%= link_to chat.match.user_match.name, chat_path(chat) %>
+  <% else %>
+  <%= link_to chat.match.user.name, chat_path(chat) %>
+  <% end %>
+<% end %>
+
+<%# if the chat.match.user = current_user display the name of user.match
+if the other way around I want to display the user  %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_21_190936) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_13_154206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,8 +45,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_190936) do
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_chats_on_user_id"
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_chats_on_match_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -81,7 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_190936) do
     t.bigint "user_match_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "pending", default: true
+    t.boolean "pending", default: false
     t.index ["user_id"], name: "index_matches_on_user_id"
     t.index ["user_match_id"], name: "index_matches_on_user_match_id"
   end
@@ -134,7 +134,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_190936) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "chats", "users"
+  add_foreign_key "chats", "matches"
   add_foreign_key "liked_movies", "movies"
   add_foreign_key "liked_movies", "users"
   add_foreign_key "matches", "users"
