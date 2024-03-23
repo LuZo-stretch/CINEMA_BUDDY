@@ -1,0 +1,74 @@
+.large-label {
+  font-size: 20px;
+}
+
+.large-input {
+  font-size: 18px; 
+  padding: 10px; 
+}
+
+.large-textarea {
+  font-size: 18px; 
+  padding: 10px; 
+}
+
+
+.back-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  
+  #error_explanation {
+    color: red;
+    border: 1px solid red;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  
+    h2 {
+      margin-top: 0;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  }
+  
+  .field {
+    margin-bottom: 20px;
+  
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+  
+  .actions {
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }

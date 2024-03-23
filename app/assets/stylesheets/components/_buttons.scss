@@ -9,14 +9,13 @@
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
-  // box-shadow: 0 0 20px #eee;
   border-radius: 25px;
   display: block;
   text-decoration: none;
 }
 
 .btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
   color: #fff;
   text-decoration: none;
 }

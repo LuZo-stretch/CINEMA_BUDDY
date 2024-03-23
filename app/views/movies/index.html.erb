@@ -1,4 +1,4 @@
-
+<%= link_to "Confirm Selection", users_path, class: 'confirm-button' %>
 <%= render 'shared/navbar' %>
 <main>
   <% if @movies.present? %>
@@ -6,14 +6,12 @@
       <div class="movie">
         <div class="movie-image">
           <%= link_to movie_path(movie) do %>
-            <!-- Check if the movie has an attached photo, and use the correct image_tag -->
             <% if movie.photo_url.present? %>
               <%= image_tag movie.photo_url, alt: "Movie Poster", class: "movie-poster" %>
             <% else %>
               <%= image_tag 'home.png', alt: "Default Movie Poster", class: "movie-poster" %>
             <% end %>
           <% end %>
-          <!-- Like icon positioned outside the movie-image container -->
              <div data-controller="like-movies"
                 data-like-movies-movie-id-value="<%= movie.id %>"
                 data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: movie.id) %>">
