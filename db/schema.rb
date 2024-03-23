@@ -81,7 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_154206) do
     t.bigint "user_match_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "pending", default: false
+    t.boolean "pending", default: true
     t.index ["user_id"], name: "index_matches_on_user_id"
     t.index ["user_match_id"], name: "index_matches_on_user_match_id"
   end
