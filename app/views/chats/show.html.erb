@@ -1,9 +1,23 @@
 <div class="container chatroom" data-controller="chat-subscription"
-    data-chat-subscription-chatroom-id-value="<%= @chat.id %>">
+    data-chat-subscription-chatroom-id-value="<%= @chat.id %>"
+    data-chat-subscription-current-user-id-value="<%= current_user.id %>">
 
   <div class="messages" data-chat-subscription-target="messages">
     <% @chat.messages.each do |message| %>
-    <%= render "messages/message", message: message %>
+      <div class="avatar">
+            <% if message.user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "avatar"%>
+            <% else %>
+              <% random_avatar_url = "https://picsum.photos/50?random=#{message.user.id}" %>
+              <%= image_tag random_avatar_url, class: "avatar" %>
+            <% end %>
+          </div>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' :
+      'justify-content-start' %>">
+        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "messages/message", message: message %>
+        </div>
+      </div>
     <% end %>
   </div>
 
@@ -15,11 +29,17 @@
       }
     } do |f|
   %>
+  <div class="input">
     <%= f.input :content,
+      class: "chat-form",
       label: false,
       # placeholder: "Message ##{@chat.name}",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= button_tag(type: 'submit', class: 'btn btn-sent') do %>
+    <i class="fa-solid fa-paper-plane"></i>
+    <% end %>
   <% end %>
+  </div>
 </div>
+<%= link_to "Back to Chats", chats_path, class: 'confirm-button' %>

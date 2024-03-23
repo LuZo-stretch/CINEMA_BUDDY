@@ -8,10 +8,11 @@ class MessagesController < ApplicationController
     @message.save
     ChatChannel.broadcast_to(
       @chat,
-      render_to_string(
+      message: render_to_string(
         partial: "message",
         locals: { message: @message }
-      )
+      ),
+      sender_id: @message.user.id
     )
     head :ok
   end
