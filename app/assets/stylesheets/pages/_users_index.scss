@@ -4,6 +4,7 @@
   border: 0;
   margin: 0px 20px;
   color: rgba(255, 255, 255, 0.3);
+  margin-top: 50px;
 }
 
 .search-form::placeholder {
@@ -76,6 +77,11 @@
 
 .modal {
   --bs-modal-bg: #1f262ddb !important;
+}
+
+.modal-btn {
+  background-color: #9d327d;
+  color: #F0F8FF;
 }
 
 .swal2-popup {
