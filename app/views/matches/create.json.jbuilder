@@ -2,4 +2,5 @@
 
 json.matched @matched
 json.match_id @match_id
-json.icon render(partial: "heart", formats: :html, locals: {user: @user_match})
+json.chat @chat
+json.icon render(partial: "heart", formats: :html, locals: { user: @user_match })

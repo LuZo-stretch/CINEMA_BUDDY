@@ -10,6 +10,7 @@ class MatchesController < ApplicationController
         match.pending = false
         match.save!
         @matched = true
+        @chat = Chat.create(match_id: match.id)
         format.html { redirect_to users_path }
         format.json
 

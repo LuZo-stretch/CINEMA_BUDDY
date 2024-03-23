@@ -29,41 +29,40 @@ export default class extends Controller {
       body: JSON.stringify({ match: this.userIdValue }),
     })
 
-      .then( response => response.json())
-      .then((data) => {
-          // this.likedId = data.liked_id
+    .then( response => response.json())
+    .then((data) => {
+      this.matchValue = true;
+      this.updateIcon(data);
 
-          this.matchValue = true;
-          this.updateIcon(data);
-
-          console.log('data: ', data)
-          if (data.matched) {
-            // alert("It's a match!");
-            Swal.fire({
-              title: "<strong>You Matched!</strong>",
-              html: `
-                Start <b>chating</b>?
-              `,
-              showCloseButton: true,
-              showCancelButton: true,
-              focusConfirm: false,
-              confirmButtonText: `
-                <i class="fa fa-thumbs-up"></i> Chat now!
-              `,
-              confirmButtonAriaLabel: "Thumbs up, yes!",
-              cancelButtonText: `
-                <i class="fa fa-thumbs-down"></i> Later
-              `,
-              cancelButtonAriaLabel: "Thumbs down, later"
-            })
-            .then((result) => {
-              if (result.isConfirmed) {
-              // Redirect to a certain page
-                window.location.href = "/movies"; // Change "/chat" to the URL of your chat page
-              }
-            })
+      console.log('data: ', data)
+      if (data.matched) {
+        // alert("It's a match!");
+        Swal.fire({
+          title: "<strong>You Matched!</strong>",
+          html: `
+            Start <b>chatting</b>?
+          `,
+          showCloseButton: true,
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText: `
+            <i class="fa fa-thumbs-up"></i> Chat now!
+          `,
+          confirmButtonAriaLabel: "Thumbs up, yes!",
+          cancelButtonText: `
+            <i class="fa fa-thumbs-down"></i> Later
+          `,
+          cancelButtonAriaLabel: "Thumbs down, later"
+        })
+        .then((result) => {
+          console.log('data2: ', data)
+          if (result.isConfirmed) {
+          // Redirecting to chat page
+            window.location.href = `/chats/${data.chat.id}`;
           }
-        });
+        })
+      }
+    });
   }
 
   unlike() {
