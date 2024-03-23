@@ -24,7 +24,7 @@ class MatchesController < ApplicationController
       else # Create a new match request
         match = Match.create(user_id: current_user.id, user_match_id: user_match.id, pending: true)
         @matched = false
-        Chat.create(match_id: match.id)
+        @chat = Chat.create(match_id: match.id) # save it to a variable
         @match_id = match.id
         format.html { redirect_to users_path, alert: 'Unable to like profile.' }
         format.json
