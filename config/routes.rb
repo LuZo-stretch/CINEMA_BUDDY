@@ -13,10 +13,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users
-  resources :matches, only: [:create, :show]
+  resources :matches
+
+  get '/faker', to: 'faker#index'
 
   resources :movies, only: [:index, :show] do
     resources :liked_movies, only: [:create, :destroy]
     # post 'toggle_favorite', on: :member
+  end
+
+  resources :chats, only: [:index, :show] do
+    resources :messages, only: :create
   end
 end

@@ -14,20 +14,32 @@ Movie.destroy_all
 
 results = URI.open("https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
   "client" => "FBSX",
-  "x-api-key" => "6TgeI2l96260XmJvAow2c7XGsSvGlgyi8OcGfcTh",
-  "authorization" => "Basic RkJTWF9YWDpTdE0xMmkzTlRJSkc=",
-  "territory" => "XX",
+  "x-api-key" => "r2k92sXJQh4sIyjkLQu1O80Uh0J41c7A46Dwtvi4",
+  "authorization" => "Basic RkJTWDpSaDlKOGdXak9UTVQ=",
+  "territory" => "UK",
   "api-version" => "v200",
   "geolocation" => "-22.0;14.0",
-  "device-datetime" => "2024-03-15T18:47:00.000Z").read
+  "device-datetime" => "2024-03-23T18:47:00.000Z").read
 movies = JSON.parse(results)
 
 movies["films"].each do |movie_data|
+  id = movie_data["film_id"]
+  movie_results = URI.open("https://api-gate2.movieglu.com/filmDetails/?film_id=#{id}",
+    "client" => "FBSX",
+    "x-api-key" => "r2k92sXJQh4sIyjkLQu1O80Uh0J41c7A46Dwtvi4",
+    "authorization" => "Basic RkJTWDpSaDlKOGdXak9UTVQ=",
+    "territory" => "UK",
+    "api-version" => "v200",
+    "geolocation" => "-22.0;14.0",
+    "device-datetime" => "2024-03-20T18:47:00.000Z").read
+  movie_info = JSON.parse(movie_results)
   movie = Movie.create(
     title: movie_data["film_name"],
     synopsis: movie_data["synopsis_long"],
     photo_url: movie_data["images"]["poster"]["1"]["medium"]["film_image"],
-    trailer: movie_data["film_trailer"]
+    trailer: movie_data["film_trailer"],
+    rating: movie_info["review_stars"],
+    end_date: movie_info["show_dates"].last["date"]
   )
 
   if movie.persisted?

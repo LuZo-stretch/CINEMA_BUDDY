@@ -1,51 +1,36 @@
-  <div class="profile-card">
-    <div class="row">
-      <%= link_to users_path, class: "user-card-link", style: "color: #ffffff;" do %>
-        <i class="fa-solid fa-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
-      <% end %>
-    </div>
-
-    <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
-    <% else %>
-      <% random_avatar_url = "https://picsum.photos/500/500?random" %>
-      <%= image_tag random_avatar_url, class: 'profile-img' %>
+<div class="profiles-card">
+  <div class="row">
+    <%= link_to users_path, class: "user-card-link", style: "color: #ffffff;" do %>
+      <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
     <% end %>
-    <div class="user-container" style="position: absolute;">
-      <h1 style="font-size: 50px;"><%= @user.name %></h1>
-      <div class="d-flex">
-        <p style="font-size: 30px;"><%= @user.age %></p>
-        <i class="fa-solid fa-heart fa-3x"
-          style="position: absolute; left: 300px; top: 65px;"
-          data-controller="like"
-          data-like-user-id-value="<%= @user.id %>"
-          data-action="click->like#like"
-          data-like-target="heartIcon">
-        </i>
-      </div>
+  </div>
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class: 'profiles-img' %>
+  <% else %>
+    <% random_avatar_url = "https://picsum.photos/500/500?random" %>
+    <%= image_tag random_avatar_url, class: 'profiles-img' %>
+  <% end %>
+  <div class="users-container" style="position: absolute;">
+    <h1 style="font-size: 50px;"><%= @user.name %></h1>
+    <div class="d-flex">
+      <p style="font-size: 30px;"><%= @user.age %></p>
+      <%# <i class="fa-solid fa-heart fa-3x btn" style="position: absolute; left: 300px; top: 65px;"></i> %>
+      <%= render 'matches/heart-show', user: @user %>
     </div>
   </div>
-  <div class="container mt-3" data-controller="user-description">
-    <button class="btn btn-description" data-action="click->user-description#hideContent">Description</button>
-    <p data-user-description-target="content" style="color: #bebfc1; padding: 10px; line-height: 1.8;"><%= @user.description %></p>
-  </div>
-  <div class="container likes-movies">
-    <h2>Liked Movies</h2>
-    <div class="cards row col-12 mt-4">
+</div>
+<div class="container mt-3" data-controller="users-description">
+  <button class="btn btn-description" data-action="click->users-description#hideContent">Description</button>
+  <p data-users-description-target="content" style="color: #bebfc1; padding: 10px; line-height: 1.8;"><%= @user.description %></p>
+</div>
+<div class="container likes-movies">
+  <h2>Liked Movies</h2>
+  <div class="cards row col-12 mt-4">
+    <% @user.liked_movies.each do |liked_movie| %>
       <div class="card-category">
-        <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://m.media-amazon.com/images/I/81PJCFAgdkL._UF1000,1000_QL80_.jpg)"></div>
-        <p>Moonlight</p>
+        <div class="card-image" style="background-image: url(<%= liked_movie.movie.photo_url %>);"></div>
+        <p style="font-size: 13px; margin-top: 5px"><%= liked_movie.movie.title %></p>
       </div>
-
-      <div class="card-category">
-        <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://upload.wikimedia.org/wikipedia/pt/c/c0/La_La_Land_%28filme%29.png)"></div>
-        <p>La La Land</p>
-      </div>
-
-      <div class="card-category">
-        <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_.jpg)"></div>
-        <p>The Martian</p>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>

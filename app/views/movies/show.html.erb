@@ -1,5 +1,20 @@
 <div class="movie-container">
   <!-- Like icon container -->
+    <% if @movie.trailer.present? %>
+    <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen muted allow="autoplay"></iframe>
+    <% else %>
+    <!-- If movie trailer is not available, display the movie image -->
+    <div class="movie-image">
+      <%= link_to movie_path(@movie) do %>
+        <% if @movie.photo_url.present? %>
+          <%= image_tag @movie.photo_url, alt: "Movie Poster", class: "movie-poster" %>
+        <% else %>
+          <%= image_tag 'home.png', alt: "Default Movie Poster", class: "movie-poster" %>
+        <% end %>
+      <% end %>
+    </div>
+    <% end %>
+
    <div data-controller="like-movies"
             data-like-movies-movie-id-value="<%= @movie.id %>"
             data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: @movie.id) %>">
@@ -12,7 +27,6 @@
             <%# <% end %>
           </div>
       </div>
-  <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen></iframe>
   <div class="movie-details">
     <h1><%= @movie.title %></h1>
     <p><%= @movie.synopsis %></p>
@@ -23,5 +37,6 @@
   </div>
 </div>
 <%= link_to "Back to Movies", movies_path, class: 'confirm-button' %>
+
  <%# <button class="back-button">Go Back</button> %>
  <%# <button class="confirm-button">Confirm Selection</button> %>

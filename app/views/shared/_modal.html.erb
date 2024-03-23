@@ -1,0 +1,38 @@
+<div class="modal fade" id="autoModal" tabindex="-1" aria-labelledby="autoModalLabel" aria-hidden="true" data-controller="auto-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="font-size: 21px;" class="modal-title" id="autoModalLabel">Find your buddy</h5>
+        <%= link_to users_path do %>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <% end %>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size: 16px; text-align: center; line-height: 2;">See who liked the same movies as you<br>and<br>Tap profiles to see more</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn modal-btn" data-bs-target="#autoModal2" data-bs-toggle="modal" data-bs-dismiss="modal">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="autoModal2" tabindex="-1" aria-labelledby="autoModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="font-size: 21px;" class="modal-title" id="autoModalLabel2">Find your buddy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size: 16px; text-align: center; line-height: 2;"> Like someone?&nbsp; Tap &nbsp; &nbsp;<i class="fa-solid fa-heart"></i><br>Mutual likes lead to matches!</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-target="#autoModal" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button>
+        <%= link_to users_path do %>
+        <button type="button" class="btn modal-btn" data-bs-dismiss="modal">Let's go!</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

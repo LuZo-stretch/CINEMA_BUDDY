@@ -1,0 +1,11 @@
+<div id="heart-show-<%= user.id  %>">
+  <i class="fa-solid fa-heart fa-3x btn <%= current_user.liked_me_back?(user) ? ' heart-red' : 'fa-heart' %>"
+    data-controller="like-show"
+    data-like-show-match-id-value="<%= current_user.get_match_id(user) %>"
+    data-like-show-match-value="<%= current_user.liked_me_back?(user) %>"
+    data-like-show-user-id-value="<%= user.id %>"
+    data-action="click->like-show#toggle"
+    data-like-show-target="heartIcon"
+    style="position: absolute; left: 300px; top: 65px;">
+  </i>
+</div>
