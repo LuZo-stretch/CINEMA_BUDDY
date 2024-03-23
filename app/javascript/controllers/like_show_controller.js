@@ -89,9 +89,9 @@ export default class extends Controller {
   }
 
   updateIcon(data) {
-    const heartIcon = document.getElementById(`heart-${this.userIdValue}`)
+    const heartIcon = document.getElementById(`heart-show-${this.userIdValue}`)
     if (heartIcon) {
-      heartIcon.innerHTML = data.icon
+      heartIcon.innerHTML = data.icon_show
     }
   }
 

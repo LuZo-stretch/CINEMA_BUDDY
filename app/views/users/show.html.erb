@@ -14,7 +14,8 @@
     <h1 style="font-size: 50px;"><%= @user.name %></h1>
     <div class="d-flex">
       <p style="font-size: 30px;"><%= @user.age %></p>
-      <%# <%= render 'matches/heart-show', user: @user %>
+      <%# <i class="fa-solid fa-heart fa-3x btn" style="position: absolute; left: 300px; top: 65px;"></i> %>
+      <%= render 'matches/heart-show', user: @user %>
     </div>
   </div>
 </div>

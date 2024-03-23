@@ -1,3 +1,8 @@
+<div class="row">
+  <%= link_to movies_path, class: "user-card-link", style: "color: #ffffff;" do %>
+    <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
+  <% end %>
+</div>
 <div class="container card-container">
   <%= render 'shared/modal' %>
   <%= form_tag users_path, method: :get, class: "d-flex" do %>
