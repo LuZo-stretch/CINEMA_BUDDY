@@ -1,57 +1,56 @@
-<%= render 'shared/navbar' %>
-<div>
-  <%= form_tag movies_path, method: :get, class: "d-flex mt-3 mb-3" do %>
-  <%= text_field_tag :query, params[:query], class: "form-control search-form", placeholder: "Search movies" %>
-  <button type="submit" class="btn" style="position: absolute; right: 40px;">
-    <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
-  </button>
-  <% end %>
-</div>
+<div class="container">
+  <%= render 'shared/navbar' %>
+  <div>
+    <%= form_tag movies_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query, params[:query], class: "form-control search-form-index", placeholder: "Search movies" %>
+    <button type="submit" class="btn" style="position: absolute; right: 40px; top: 55px;">
+      <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
+    </button>
+    <% end %>
+  </div>
 
-<main>
-  <% if @movies.present? %>
-    <% @movies.each do |movie| %>
-      <div class="movie">
-        <div class="movie-image">
-          <%= link_to movie_path(movie) do %>
-            <!-- Check if the movie has an attached photo, and use the correct image_tag -->
+  <main>
+    <h1 style="padding-left: 18px; margin-top: 30px;">Movies on Theater</h1>
+    <% if @movies.present? %>
+      <% @movies.each do |movie| %>
+        <%= link_to movie_path(movie) do %>
+        <div class="movie row">
+          <div class="col d-flex mb-2" style="font-size: 20px;">
+            <%= movie.title %>
+          </div>
+          <div class="movie-poster">
             <% if movie.photo_url.present? %>
               <%= image_tag movie.photo_url, alt: "Movie Poster", class: "movie-poster" %>
             <% else %>
               <%= image_tag 'home.png', alt: "Default Movie Poster", class: "movie-poster" %>
             <% end %>
-          <% end %>
-          <!-- Like icon positioned outside the movie-image container -->
-             <div data-controller="like-movies"
-                data-like-movies-movie-id-value="<%= movie.id %>"
-                data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: movie.id) %>">
-              <div class="like-icon" data-action="click->like-movies#toggle">
-                <i class="<%= current_user.liked_movies.exists?(movie_id: movie.id) ? 'fas' : 'far' %> fa-heart"></i>
-                <%# <%= simple_form_for [movie, LikedMovie.new] do |f| %>
-                  <%# <button type="submit" class="btn text-warning"> %>
-                    <%# <i class="fas fa-heart"></i> %>
-                  <%# </button> %>
-                <%# <% end %>
+        <% end %>
+            <div class="movie-info row">
+              <div class="col d-flex align-items-center mt-1">
+                <i class="fas fa-calendar-alt fa-xs"></i>
+                <p>&nbsp;<%= movie.end_date %></p>
               </div>
+            </div>
+            <div class="mt-1 movie-rating row">
+              <div class="col d-flex align-items-center">
+                <i class="fas fa-star" style="color: #7d2020;"></i>
+                <p>&nbsp;<%= movie.rating %>/5</p>
+              </div>
+                <div data-controller="like-movies"
+                  data-like-movies-movie-id-value="<%= movie.id %>"
+                  data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: movie.id) %>">
+                  <div class="like-icon" data-action="click->like-movies#toggle">
+                    <i class="<%= current_user.liked_movies.exists?(movie_id: movie.id) ? 'fas' : 'far' %> fa-heart" style="position: absolute; top: 440px; right:40px"></i>
+                  </div>
+                </div>
+            </div>
           </div>
         </div>
-        <div class="movie-details">
-          <!-- Date on the left -->
-          <div class="movie-info">
-            <i class="fas fa-calendar-alt"></i>
-            <p><%= movie.end_date %></p>
-          </div>
-          <!-- Rating on the right -->
-          <div class="movie-info">
-            <i class="fas fa-star"></i>
-            <p><%= movie.rating %></p>
-          </div>
-        </div>
-      </div>
+        <div class="container costum-line"></div>
+      <% end %>
+    <% else %>
+      <p>No movies available</p>
     <% end %>
-  <% else %>
-    <p>No movies available</p>
-  <% end %>
-  <%= link_to "Confirm Selection", faker_path, class: 'confirm-button' %>
-<%# <button class="confirm-button">Confirm Selection</button> %>
-</main>
+    <%= link_to "Confirm Selection", faker_path, class: 'confirm-button' %>
+  </main>
+</div>
