@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def liked_movies
+    @liked_movies = current_user.liked_movies.includes(:movie)
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
