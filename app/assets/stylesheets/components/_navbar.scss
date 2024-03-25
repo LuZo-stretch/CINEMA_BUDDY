@@ -4,33 +4,24 @@
   --navbar-hover-background-color: #272d33;
 }
 
-.navbar-container {
-  position: fixed;
+.navbar-container { 
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--navbar-background-color);
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1030;
+  padding: 5px 0;
 }
 
 .navbar-lewagon {
-  justify-content: space-around;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
   flex-wrap: wrap;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 1;
-  justify-content: space-around;
-}
-
-.navbar-toggler-icon {
-  background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
-}
-
-.nav-link, .confirm-button {
-  color: var(--navbar-text-color);
-  transition: color 0.3s ease-in-out;
+  justify-content: center;
 }
 
 .nav-link:hover, .confirm-button:hover {
@@ -50,3 +41,15 @@
   height: 50px; 
   object-fit: cover;
 }
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; 
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+

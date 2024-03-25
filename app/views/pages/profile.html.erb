@@ -1,29 +1,40 @@
-<div class="container">
+<div class="page-container">
   <h1 class="my-profile-heading">My Profile</h1>
-  <div class="profile-card">
+
+  <div class="profile-card user-details">
     <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key,  class: 'profile-img' %>
+      <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
     <% else %>
-      <%= image_tag("default-avatar1.png", class: 'profile-img') %>
+      <%= image_tag("default-avatar.png", class: 'profile-img') %>
     <% end %>
-    <div class="user-container" style="position: absolute; bottom: 50px">
-      <h2><%= @user.name %></h2>
-      <div class="d-flex align-items-center">
-        <p><%= @user.age %></p>
+
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="field">
+        <%= f.label :name, class: "large-label" %><br>
+        <%= f.text_field :name, class: "large-input" %>
       </div>
+      <div class="field">
+        <%= f.label :age, class: "large-label" %><br>
+        <%= f.number_field :age, class: "large-input" %>
+      </div>
+      <div class="field">
+        <%= f.label :description, class: "large-label" %><br>
+        <%= f.text_area :description, class: "large-textarea" %>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="liked-movies">Liked Movies:</h2>
+  <% @user.liked_movies.each do |liked_movie| %>
+    <div class="card-category">
+      <div class="card-image" style="background-image: url(<%= liked_movie.movie.photo_url %>);"></div>
+      <%= liked_movie.movie.title %>
     </div>
+  <% end %>
   </div>
-  <div class="container mt-4">
-    <h2>Description:</h2>
-    <p><%= @user.description %></p>
-  </div>
-  <div class="container">
-    <h2>Liked Movies:</h2>
-    <div class="cards row col-12 mt-4">
-    </div>
-  </div>
-    <div class="d-flex justify-content-end mt-3">
-     <%= link_to 'Edit My Profile', edit_user_path(@user), class: "btn log-in mr-2" %>
-    <%= link_to 'Back', users_path, class: "btn log-in" %>
+
+  <div class="d-flex justify-content-end mt-3">
+    <%= link_to 'Edit My Profile', edit_user_path(@user), class: "edit-profile-btn" %>
+    <%= link_to 'Back', users_path, class: "edit-profile-btn" %>
   </div>
 </div>

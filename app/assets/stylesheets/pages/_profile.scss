@@ -5,15 +5,11 @@
   margin-bottom: 20px;
 }
 
-.fa-left-long-icon {
-  position: absolute;
-  top: 10px;
-  left: 15px;
-}
-
-.user-container {
-  position: absolute;
-  bottom: 50px;
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .profile-img {
@@ -23,25 +19,49 @@
   object-fit: cover;
   border: 3px solid #fff; 
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .user-info {
+  text-align: center;
   padding: 20px;
 }
 
 .user-details {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  margin-bottom: 15px;
 }
 
-.edit-profile-btn {
+.liked-movies {
+  font-size: 22px; 
+  padding-left: 60px; 
+  margin: 0px 0px 0px;
+}
+
+.edit-profile-btn, .btn.log-in {
   background-image: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%);
   color: white;
+  border: none;
   border-radius: 25px;
   text-decoration: none;
-  margin-bottom: 20px;
+  margin: 10px;
   font-size: 17px;
   padding: 10px 20px;
-  display: inline-block; 
+  cursor: pointer;
+  display: inline-block;
+}
+
+.card-category {
+  margin: 10px;
+  text-align: center;
+}
+
+.card-image {
+  width: 100px;
+  height: 150px;
+  background-size: cover;
+  margin: 0 auto;
+  border-radius: 8px;
 }
