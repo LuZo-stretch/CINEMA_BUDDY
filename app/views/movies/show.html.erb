@@ -1,9 +1,14 @@
+<div class="row">
+  <%= link_to movies_path, class: "user-card-link", style: "color: #ffffff;" do %>
+    <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 20px; left: 20px; z-index: 1;"></i>
+  <% end %>
+</div>
 <div class="movie-container">
   <!-- Like icon container -->
-    <% if @movie.trailer.present? %>
+  <% if @movie.trailer.present? %>
     <iframe src="<%= @movie.trailer %>" frameborder="0" allowfullscreen muted allow="autoplay"></iframe>
-    <% else %>
-    <!-- If movie trailer is not available, display the movie image -->
+  <% else %>
+  <!-- If movie trailer is not available, display the movie image -->
     <div class="movie-image">
       <%= link_to movie_path(@movie) do %>
         <% if @movie.photo_url.present? %>
@@ -13,30 +18,44 @@
         <% end %>
       <% end %>
     </div>
-    <% end %>
+  <% end %>
 
-   <div data-controller="like-movies"
-            data-like-movies-movie-id-value="<%= @movie.id %>"
-            data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: @movie.id) %>">
-          <div class="like-icon" data-action="click->like-movies#toggle">
-            <i class="<%= current_user.liked_movies.exists?(movie_id: @movie.id) ? 'fas' : 'far' %> fa-heart"></i>
-            <%# <%= simple_form_for [movie, LikedMovie.new] do |f| %>
-              <%# <button type="submit" class="btn text-warning"> %>
-                <%# <i class="fas fa-heart"></i> %>
-              <%# </button> %>
-            <%# <% end %>
-          </div>
-      </div>
-  <div class="movie-details">
-    <h1><%= @movie.title %></h1>
-    <p><%= @movie.synopsis %></p>
-    <div class="ratings-date">
-      <p>Rating: <%= @movie.rating %></p>
-      <%# <p>End Date: <%= @movie.end_date.strftime("%B %d, %Y") %>
+  <div data-controller="like-movies"
+      data-like-movies-movie-id-value="<%= @movie.id %>"
+      data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: @movie.id) %>">
+    <div class="like-icon" data-action="click->like-movies#toggle">
+      <i class="<%= current_user.liked_movies.exists?(movie_id: @movie.id) ? 'fas' : 'far' %> fa-heart"></i>
     </div>
   </div>
+  <div class="container costum-line-show"></div>
+  <h1 class="d-flex" style="position: absolute; top: 400px; left: 30px; font-size: larger;"><%= @movie.title %></h1>
+  <p style="position: absolute; top: 425px; left: 30px; color: #ffffffbd; font-size: small;">2024</p>
+  <div class="movie-details-show container text-center">
+    <div class="row align-items-center">
+      <div class="col">
+        <i class="fa-regular fa-comment-dots" style="color: #ffffff;"></i>
+        <p>rewiews</p>
+      </div>
+      <div class="col">
+        <i class="fas fa-star" style="color: #7d2020;"></i>
+        <p>&nbsp;<%= @movie.rating %>/5</p>
+      </div>
+      <div class="col">
+        <i class="fa-regular fa-thumbs-up" style="color: #ffffff;">
+        </i>
+        <p>Rate This</p>
+      </div>
+    </div>
+  </div>
+  <div class="container costum-line-show-2"></div>
+  <div class="container synopsis">
+    <h2 style="margin-top: 20px; margin-bottom: 30px;">Synopsis</h2>
+    <p style="line-height: 1.7;"><%= @movie.synopsis %></p>
+  </div>
+
+
 </div>
-<%= link_to "Back to Movies", movies_path, class: 'confirm-button' %>
+<%# <%= link_to "Back to Movies", movies_path, class: 'confirm-button' %>
 
  <%# <button class="back-button">Go Back</button> %>
  <%# <button class="confirm-button">Confirm Selection</button> %>
