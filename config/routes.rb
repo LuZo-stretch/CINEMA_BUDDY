@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
   resources :matches
+  resources :chats, only: [:index]
 
   get '/faker', to: 'faker#index'
 
