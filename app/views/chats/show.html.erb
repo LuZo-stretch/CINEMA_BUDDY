@@ -4,14 +4,6 @@
 
   <div class="messages" data-chat-subscription-target="messages">
     <% @chat.messages.each do |message| %>
-      <div class="avatar">
-            <% if message.user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, class: "avatar"%>
-            <% else %>
-              <% random_avatar_url = "https://picsum.photos/50?random=#{message.user.id}" %>
-              <%= image_tag random_avatar_url, class: "avatar" %>
-            <% end %>
-          </div>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' :
       'justify-content-start' %>">
         <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
