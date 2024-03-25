@@ -14,6 +14,11 @@
               <% end %>
             </li>
             <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa-solid fa-house"></i> 
+              </a>
+            </li>
+            <li class="nav-item">
               <%= link_to "#", class: "nav-link" do %>
                 <i class="fa-regular fa-message"></i>
               <% end %>
@@ -22,11 +27,6 @@
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
               <% end %>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fa-solid fa-right-from-bracket"></i> 
-              </a>
             </li>
           <% else %>
             <li class="nav-item">
