@@ -43,9 +43,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_154206) do
   end
 
   create_table "chats", force: :cascade do |t|
+    t.bigint "match_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "match_id"
     t.index ["match_id"], name: "index_chats_on_match_id"
   end
 
