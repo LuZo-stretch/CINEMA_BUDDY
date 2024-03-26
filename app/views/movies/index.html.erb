@@ -1,12 +1,11 @@
 <div class="container">
-  <%= render 'shared/navbar' %>
   <div>
-    <%= form_tag movies_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query, params[:query], class: "form-control search-form-index", placeholder: "Search movies" %>
-    <button type="submit" class="btn" style="position: absolute; right: 40px; top: 55px;">
-      <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
-    </button>
-    <% end %>
+    <%= form_tag movies_path, method: :get, class: "d-flex position-relative" do %>
+  <%= text_field_tag :query, params[:query], class: "form-control search-form-index", placeholder: "Search movies", style: "padding-right: 60px;" %>
+  <button type="submit" class="btn position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%);">
+    <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
+  </button>
+<% end %>
   </div>
 
   <main>

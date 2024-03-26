@@ -1,10 +1,13 @@
+<div class="row">
+ <%= link_to profile_path(current_user), class: "user-card-link", style: "color: #ffffff;" do %>
+      <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
+    <% end %>
+  </div>  
 <div class="page-container">
- <%= link_to 'Back', profile_path(current_user), class: "btn-grad back-button" %>
 <%= form_for @user, url: user_path(@user), html: { multipart: true } do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
