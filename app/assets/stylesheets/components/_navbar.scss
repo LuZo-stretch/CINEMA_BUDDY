@@ -8,7 +8,6 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%);
   box-shadow: 0 -2px 10px rgba(22, 13, 13, 0.189);
   z-index: 1030;
   padding: 5px 0;
@@ -47,12 +46,6 @@
   object-fit: cover;
 }
 
-.navbar-icon {
-  width: 50px;
-  height: 50px; 
-  object-fit: cover;
-}
-
 .navbar-nav {
   display: flex;
   justify-content: space-around;
@@ -62,4 +55,5 @@
 
 .nav-item {
   margin: 0 10px;
+  font-size: x-large;
 }

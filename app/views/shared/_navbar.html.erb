@@ -6,22 +6,21 @@
             <li class="nav-item active">
               <%= link_to profile_path(current_user), class: "nav-link" do %>
                 <% if current_user.photo.attached? %>
-                  <%= cl_image_tag current_user.photo.key, height: 30, width: 30, crop: :fill, class: 'profile-img-icon' %>
+                  <%= cl_image_tag current_user.photo.key, crop: :fill, class: 'profile-img-icon' %>
                 <% else %>
                   <%= image_tag("default-avatar.png", size: "30x30", class: 'profile-img-icon') %>
                 <% end %>
               <% end %>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fa-solid fa-house"></i> 
-              </a>
-            </li>
+              <%= link_to movies_path, class: "nav-link" do %>
+    <i class="fa-solid fa-house"></i> 
+  <% end %>
             <li class="nav-item">
-              <%= link_to "#", class: "nav-link" do %>
-                <i class="fa-regular fa-message"></i>
-              <% end %>
-            </li>
+  <%= link_to chats_path, class: "nav-link" do %>
+    <i class="fa-regular fa-message"></i>
+  <% end %>
+</li>
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
