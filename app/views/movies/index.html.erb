@@ -8,7 +8,6 @@
     </button>
     <% end %>
   </div>
-
   <main class="mb-5">
     <h1 style="padding-left: 18px; margin-top: 30px;">Movies on Theater</h1>
     <% if @movies.present? %>
@@ -30,7 +29,7 @@
             </div>
             <div class="mt-1 movie-rating row">
               <div class="col d-flex align-items-center">
-                <i class="fas fa-star" style="color: #7d2020;"></i>
+                <i class="fas fa-star" style="color: #7D2020;"></i>
                 <p>&nbsp;<%= movie.rating %>/5</p>
               </div>
                 <div data-controller="like-movies"
