@@ -13,7 +13,7 @@
 
 
 
-.card-product {
+.card-product-index-users {
   position: relative;
   overflow: hidden;
   height: 90px;
@@ -25,7 +25,7 @@
   margin-left: 10px
 }
 
-.card-product img {
+.card-product-index-users img {
   border-radius: 50%;
   // height: 50px;
   // width: 50px;
@@ -38,12 +38,12 @@
 #user-list {
   margin-top: 10px;
 }
-.card-product-infos h2 {
+.card-product-infos-index-users h2 {
   font-size: 16px;
   font-weight: bold;
 }
 
-.card-product-infos p {
+.card-product-infos-index-users p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
@@ -57,13 +57,13 @@
   white-space: nowrap;
 }
 
-.card-product-infos {
+.card-product-infos-index-users {
   padding-left: 15px;
   width: 250px; /* Adjust the width as needed */
   height: 75px;
 }
 
-.user-card-link {
+.user-index-card-link {
   text-decoration: none;
 }
 

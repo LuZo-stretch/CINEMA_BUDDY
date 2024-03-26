@@ -11,8 +11,8 @@
     </button>
   <% end %>
   <% @users.each do |user| %>
-    <%= link_to user_path(user), class: "user-card-link" do %>
-      <div class="card-product my-2">
+    <%= link_to user_path(user), class: "user-index-card-link" do %>
+      <div class="card-product-index-users my-2">
         <div class="card-product-img">
           <% if user.photo.attached? %>
             <%= cl_image_tag user.photo.key %>
@@ -23,7 +23,7 @@
         </div>
     <% end %>
         <div class="d-flex align-items-center">
-          <div class="card-product-infos">
+          <div class="card-product-infos-index-users">
             <h2 id="user-list"><%= user.name %></h2>
             <p class="description-limit"><%= user.description %><br>
               <%= link_to user_path(user), class: "user-card-link", style: "color: #ffa2cb;" do %>
