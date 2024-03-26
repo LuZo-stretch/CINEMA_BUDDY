@@ -1,0 +1,26 @@
+.input {
+  border-radius: 15px 40px 40px 15px;
+  display: flex;
+  background-color: white;
+  width: 100%;
+  align-items: center;
+  height: 65px;
+}
+
+.form-control#message_content {
+  background: transparent;
+  border: none;
+
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.btn-sent {
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
+  border-radius: 50%;
+  height: 50px;
+  color: white;
+  margin-right: 8px;
+}
