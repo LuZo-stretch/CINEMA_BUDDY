@@ -1,10 +1,53 @@
-<% @chats.each do |chat| %>
-  <% if chat.match.user == current_user %>
-  <%= link_to chat.match.user_match.name, chat_path(chat) %>
-  <% else %>
-  <%= link_to chat.match.user.name, chat_path(chat) %>
+<%= render 'shared/navbar' %>
+<h1>Quick Start</h1>
+<div class="container">
+  <div class="avatar-list">
+    <% @chats.each do |chat| %>
+      <% other_user = chat.match.user == current_user ? chat.match.user_match : chat.match.user %>
+      <%= link_to chat_path(chat), class: "avatar-link" do %>
+        <% if other_user.photo.attached? %>
+          <%= cl_image_tag other_user.photo.key, class: "avatar-img" %>
+        <% else %>
+          <% random_avatar_url = "https://picsum.photos/50?random=#{other_user.id}" %>
+          <%= image_tag random_avatar_url, class: "avatar-img" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+<div class="container card-container">
+  <% @chats.each do |chat| %>
+    <% other_user = chat.match.user == current_user ? chat.match.user_match : chat.match.user %>
+    <%= link_to chat_path(chat), class: "user-card-link" do %>
+      <div class="card-product my-2">
+        <div class="card-product-img">
+          <% if other_user.photo.attached? %>
+            <%= cl_image_tag other_user.photo.key %>
+          <% else %>
+            <% random_avatar_url = "https://picsum.photos/50?random=#{other_user.id}" %>
+            <%= image_tag random_avatar_url %>
+          <% end %>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="card-product-infos">
+            <h2 id="user-list"><%= other_user.name %></h2>
+            <% last_message = chat.messages.order(created_at: :desc).first %>
+            <% if last_message %>
+              <p><%= truncate(last_message.content, length: 50) %></p>
+              <p class="chat-time"><%= last_message.created_at.strftime("%H:%M") %></p>
+            <% else %>
+              <p>Start the conversation!</p>
+              <p class="chat-time">---</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <div class="container chat-costum-line"></div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+
 
 <%# if the chat.match.user = current_user display the name of user.match
 if the other way around I want to display the user  %>

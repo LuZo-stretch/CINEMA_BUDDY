@@ -7,16 +7,12 @@
   </button>
 <% end %>
   </div>
-
-  <main>
+  <main class="mb-5">
     <h1 style="padding-left: 18px; margin-top: 30px;">Movies on Theater</h1>
     <% if @movies.present? %>
       <% @movies.each do |movie| %>
         <%= link_to movie_path(movie) do %>
         <div class="movie row">
-          <div class="col d-flex mb-2" style="font-size: 20px;">
-            <%= movie.title %>
-          </div>
           <div class="movie-poster">
             <% if movie.photo_url.present? %>
               <%= image_tag movie.photo_url, alt: "Movie Poster", class: "movie-poster" %>
@@ -32,14 +28,14 @@
             </div>
             <div class="mt-1 movie-rating row">
               <div class="col d-flex align-items-center">
-                <i class="fas fa-star" style="color: #7d2020;"></i>
+                <i class="fas fa-star" style="color: #7D2020;"></i>
                 <p>&nbsp;<%= movie.rating %>/5</p>
               </div>
                 <div data-controller="like-movies"
                   data-like-movies-movie-id-value="<%= movie.id %>"
                   data-like-movies-liked-value="<%= current_user.liked_movies.exists?(movie_id: movie.id) %>">
                   <div class="like-icon" data-action="click->like-movies#toggle">
-                    <i class="<%= current_user.liked_movies.exists?(movie_id: movie.id) ? 'fas' : 'far' %> fa-heart" style="position: absolute; top: 440px; right:40px"></i>
+                    <i class="<%= current_user.liked_movies.exists?(movie_id: movie.id) ? 'fas' : 'far' %> fa-heart" style="position: absolute; top: 380px; right:20px"></i>
                   </div>
                 </div>
             </div>

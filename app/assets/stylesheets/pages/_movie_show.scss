@@ -28,14 +28,13 @@ iframe {
   }
 }
 
-.movie-details {
-  margin-top: 20px;
-  text-align: center;
+.movie-details-show {
+  margin-top: 5px;
 }
 
 .movie-details h1 {
-  font-size: 24px;
-  color: #ffffff;
+  font-size: 25px;
+  color: #ffffff96
 }
 
 .movie-details p {
@@ -77,10 +76,10 @@ iframe {
 }
 
 .like-icon {
-  z-index: 10000s;
+  // z-index: 10000s;
   position: absolute;
-  top: 10px; // Adjust to position the icon from the top of the container
-  right: 10px; // Adjust to position the icon from the right of the container
+  top: 20px; // Adjust to position the icon from the top of the container
+  right: 30px; // Adjust to position the icon from the right of the container
   font-size: 24px; // Adjust the size of the heart icon as needed
   color: #f3efefb7; // Icon color
   opacity: 0.75; // Make the icon slightly translucent by default
@@ -89,4 +88,24 @@ iframe {
     cursor: pointer;
     color: #670a0a;
   }
+}
+
+.costum-line-show {
+  border-bottom: 0.7px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.costum-line-show-2 {
+  border-bottom: 0.7px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.thumbs-up {
+  color: white;
+}
+
+.fa-solid {
+  color: #ffffff !important;
 }
