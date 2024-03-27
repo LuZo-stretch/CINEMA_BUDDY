@@ -6,7 +6,7 @@
 <div class="container card-container">
   <%= form_tag users_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query, params[:query], class: "form-control search-form", placeholder: "Search profiles" %>
-    <button type="submit" class="btn" style="position: absolute; right: 40px; top: 50px;">
+    <button type="submit" class="btn" style="position: absolute; right: 40px; top: 140px;">
       <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
     </button>
   <% end %>
