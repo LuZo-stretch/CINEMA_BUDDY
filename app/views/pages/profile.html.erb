@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="my-profile-heading">My Profile</h1>
   <div class="profile-card">
-    <%= link_to users_path, class: "user-card-link" do %>
+    <%= link_to movies_path, class: "user-card-link" do %>
       <i class="fa-solid fa-left-long" style="position: absolute; top: 10px; left: 15px;"></i>
     <% end %>
     <% if @user.photo.attached? %>
@@ -10,7 +10,7 @@
       <%= image_tag("default-avatar1.png", class: 'profile-img') %>
     <% end %>
     <div class="user-container" style="position: absolute; bottom: 50px">
-      <h2><%= @user.name %></h2> 
+      <h2><%= @user.name %></h2>
       <div class="d-flex align-items-center">
         <p><%= @user.age %></p>
       </div>
