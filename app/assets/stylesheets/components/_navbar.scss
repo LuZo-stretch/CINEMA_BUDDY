@@ -4,7 +4,7 @@
   --navbar-hover-background-color: #272d33;
 }
 
-.navbar-container { 
+.navbar-container {
   bottom: 0;
   left: 0;
   width: 100%;
@@ -13,21 +13,27 @@
   padding: 5px 0;
 }
 
-.navbar-lewagon {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  flex-wrap: wrap;
-}
+// .navbar-lewagon {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-wrap: wrap;
+  // justify-content: space-between;
+// }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 1;
-  justify-content: center;
-}
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 1;
+//   justify-content: center;
+//  // flex-grow: 0;
+// }
 
-.navbar-toggler-icon {
-  background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
-}
+// .navbar-toggler-icon {
+//   background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
+// }
+
+.nav-link {
+  color: white;
+ }
 
 .nav-link, .confirm-button {
   color: var(--navbar-text-color);
@@ -41,8 +47,8 @@
 
 .profile-img-icon {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
 }
 
@@ -50,10 +56,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%; 
+  width: 100%;
 }
 
 .nav-item {
   margin: 0 10px;
-  font-size: x-large;
+  font-size: large;
 }

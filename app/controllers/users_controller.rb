@@ -17,15 +17,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id] == "sign_out"
-      redirect_to root_path
-    else
+    # if params[:id] == "sign_out"
+    #   redirect_to root_path
+    # else
     @user = User.find(params[:id])
     respond_to do |format|
       format.html
       format.json { render json: @user }
     end
-  end
+  # end
 end
 
   def edit

@@ -1,12 +1,13 @@
+<%= render 'shared/navbar' %>
 <div class="row">
-  <%= link_to movies_path, class: "user-card-link", style: "color: #ffffff;" do %>
-    <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 20px; left: 20px;"></i>
+  <%= link_to movies_path, class: "user-card-link", style: "color: #FFFFFF;" do %>
+    <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 70px; left: 20px;"></i>
   <% end %>
 </div>
 <div class="container card-container">
   <%= form_tag users_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query, params[:query], class: "form-control search-form", placeholder: "Search profiles" %>
-    <button type="submit" class="btn" style="position: absolute; right: 40px; top: 140px;">
+    <button type="submit" class="btn" style="position: absolute; right: 40px; top: 113px;">
       <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
     </button>
   <% end %>
@@ -26,7 +27,7 @@
           <div class="card-product-infos-index-users">
             <h2 id="user-list"><strong><%= user.name %></strong>, <%= user.age %></h2>
             <p class="descriptions-limit"><%= user.description %><br>
-              <%= link_to user_path(user), class: "user-index-card-link", style: "color: #ffa2cb;" do %>
+              <%= link_to user_path(user), class: "user-index-card-link", style: "color: #FFA2CB;" do %>
               see more...
               <% end %>
             </p>
@@ -36,5 +37,4 @@
     </div>
   <% end %>
 </div>
-
 <%# And then add the usual text-decoration: none;  etc to your flat-card-link  CSS %>
