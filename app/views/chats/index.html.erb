@@ -1,6 +1,6 @@
 <%= render 'shared/navbar' %>
-<h1>Inbox</h1>
 <div class="container">
+  <h1>Inbox</h1>
   <div class="avatar-list">
     <% @chats.each do |chat| %>
       <% other_user = chat.match.user == current_user ? chat.match.user_match : chat.match.user %>
