@@ -1,6 +1,9 @@
 <%= render 'shared/navbar' %>
+<%= link_to users_path, class: "user-card-link", style: "color: #FFFFFF;" do %>
+  <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 70px; left: 20px;"></i>
+<% end %>
 <div class="container">
-  <h1>Inbox</h1>
+  <h1 style="margin-top: 30px;">Inbox</h1>
   <div class="avatar-list">
     <% @chats.each do |chat| %>
       <% other_user = chat.match.user == current_user ? chat.match.user_match : chat.match.user %>
@@ -28,9 +31,10 @@
             <%= image_tag random_avatar_url %>
           <% end %>
         </div>
+    <% end %>
         <div class="d-flex align-items-center">
           <div class="card-product-infos">
-            <h2 id="user-list"><%= other_user.name %></h2>
+            <h2><%= other_user.name %></h2>
             <% last_message = chat.messages.order(created_at: :desc).first %>
             <% if last_message %>
               <p><%= truncate(last_message.content, length: 50) %></p>
@@ -43,7 +47,6 @@
         </div>
       </div>
   <div class="container chat-costum-line"></div>
-    <% end %>
   <% end %>
 </div>
 

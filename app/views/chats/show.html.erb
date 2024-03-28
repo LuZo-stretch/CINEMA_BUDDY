@@ -1,37 +1,44 @@
-<div class="container chatroom" data-controller="chat-subscription"
-    data-chat-subscription-chatroom-id-value="<%= @chat.id %>"
-    data-chat-subscription-current-user-id-value="<%= current_user.id %>">
-
-  <div class="messages" data-chat-subscription-target="messages">
-    <% @chat.messages.each do |message| %>
-      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' :
-      'justify-content-start' %>">
-        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-          <%= render "messages/message", message: message %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <%= simple_form_for [@chat, @message],
-  html: {
-    class: "d-flex",
-    data: {
-      action: "turbo:submit-end->chat-subscription#resetForm"
-      }
-    } do |f|
-  %>
-  <div class="input">
-    <%= f.input :content,
-      class: "chat-form",
-      label: false,
-      # placeholder: "Message ##{@chat.name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= button_tag(type: 'submit', class: 'btn btn-sent') do %>
-    <i class="fa-solid fa-paper-plane"></i>
-    <% end %>
+<div class="container">
+  <div class="row">
+  <%= link_to chats_path, class: "user-card-link", style: "color: #FFFFFF;" do %>
+    <i class="fa-solid fa-arrow-left-long" style="position: absolute; top: 40px; left: 20px;"></i>
   <% end %>
   </div>
+  <div class="container chatroom" data-controller="chat-subscription"
+      data-chat-subscription-chatroom-id-value="<%= @chat.id %>"
+      data-chat-subscription-current-user-id-value="<%= current_user.id %>">
+
+    <div class="messages" data-chat-subscription-target="messages">
+      <% @chat.messages.each do |message| %>
+        <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' :
+        'justify-content-start' %>">
+          <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+            <%= render "messages/message", message: message %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= simple_form_for [@chat, @message],
+    html: {
+      class: "d-flex",
+      data: {
+        action: "turbo:submit-end->chat-subscription#resetForm"
+        }
+      } do |f|
+    %>
+    <div class="input">
+      <%= f.input :content,
+        class: "chat-form",
+        label: false,
+        # placeholder: "Message ##{@chat.name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= button_tag(type: 'submit', class: 'btn btn-sent') do %>
+      <i class="fa-solid fa-paper-plane"></i>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+  <%# <%= link_to "Back to Chats", chats_path, class: 'confirm-button' %>
 </div>
-<%= link_to "Back to Chats", chats_path, class: 'confirm-button' %>
