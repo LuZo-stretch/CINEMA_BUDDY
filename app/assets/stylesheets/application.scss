@@ -1,7 +1,8 @@
 // External libraries
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
 @import "bootstrap";
+@import "font-awesome";
 
 // Graphical variables
 @import "config/fonts";
@@ -21,7 +22,7 @@
 @import "pages/sweetalert";
 @import "pages/profile";
 @import "pages/chats_index";
-@import "pages/edit";
+// @import "pages/edit";
 
 body {
   font-family: 'Montserrat', sans-serif;
