@@ -3,7 +3,7 @@
   <div>
     <%= form_tag movies_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query, params[:query], class: "form-control search-form-index", placeholder: "Search movies" %>
-    <button type="submit" class="btn" style="position: absolute; right: 40px; top: 55px;">
+    <button type="submit" class="btn" style="position: absolute; right: 35px; top: 80px;">
       <i class="fa-solid fa-magnifying-glass" style="color: rgba(255, 255, 255, 0.3);"></i>
     </button>
     <% end %>

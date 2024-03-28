@@ -1,48 +1,41 @@
-<%# <div class="container">
-  <h1 class="my-profile-heading">My Profile</h1>
-  <div class="profile-card">
-    <%= link_to movies_path, class: "user-card-link" do %>
-      <%# <i class="fa-solid fa-left-long" style="position: absolute; top: 10px; left: 15px;"></i> %>
-    <%# <% end %> %>
-  <%# </div> %>
 <%# <div class="page-container-profile"> %>
   <%# <h1 class="my-profile-heading">My Profile</h1> %>
 
   <%# <div class="profile-card user-details"> %>
-    <%# <% if @user.photo.attached? %> %>
-      <%# <%= cl_image_tag @user.photo.key, class: 'profile-img' %> %>
-    <%# <% else %> %>
-      <%# <%= image_tag("default-avatar.png", class: 'profile-img') %> %>
-    <%# <% end %> %>
+    <%# <% if @user.photo.attached? %>
+      <%# <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
+    <%# <% else %>
+      <%# <%= image_tag("default-avatar.png", class: 'profile-img') %>
+    <%# <% end %>
     <%# <div class="user-container" style="position: absolute; bottom: 50px"> %>
-      <%# <h2><%= @user.name</h2> %> %>
+      <%# <h2><%= @user.name</h2> %>
       <%# <div class="d-flex align-items-center"> %>
-        <%# <p><%= @user.age</p> %> %>
+        <%# <p><%= @user.age</p> %>
 
       <%# </div> %>
       <%# <div class="field"> %>
-        <%# <%= f.label :age, class: "large-label"<br> %> %>
-        <%# <%= f.number_field :age, class: "large-input" %> %>
+        <%# <%= f.label :age, class: "large-label"<br> %>
+        <%# <%= f.number_field :age, class: "large-input" %>
       <%# </div> %>
       <%# <div class="field"> %>
-        <%# <%= f.label :description, class: "large-label"<br> %> %>
-        <%# <%= f.text_area :description, class: "large-textarea" %> %>
+        <%# <%= f.label :description, class: "large-label"<br> %>
+        <%# <%= f.text_area :description, class: "large-textarea" %>
       <%# </div> %>
-    <%# <% end %> %>
+    <%# <% end %>
   <%# </div> %>
 
   <%# <h2 class="liked-movies">Liked Movies:</h2> %>
-  <%# <% @user.liked_movies.each do |liked_movie| %> %>
+  <%# <% @user.liked_movies.each do |liked_movie| %>
     <%# <div class="card-category"> %>
       <%# <div class="card-image" style="background-image: url(<%= liked_movie.movie.photo_url);"></div> %> %>
-      <%# <%= liked_movie.movie.title %> %>
+      <%# <%= liked_movie.movie.title %>
     <%# </div> %>
-  <%# <% end %> %>
+  <%# <% end %>
   <%# </div> %>
 
   <%# <div class="d-flex justify-content-end mt-3"> %>
-    <%# <%= link_to 'Edit My Profile', edit_registration_path(@user), class: "edit-profile-btn" %> %>
-  <%# </div> %> %>
+    <%# <%= link_to 'Edit My Profile', edit_registration_path(@user), class: "edit-profile-btn" %>
+  <%# </div> %>
 
   <div class="container">
   <h1 class="my-profile-heading">My Profile</h1>
@@ -50,6 +43,7 @@
     <%= link_to movies_path, class: "user-card-link" do %>
       <i class="fa-solid fa-left-long" style="position: absolute; top: 10px; left: 15px;"></i>
     <% end %>
+    </div>
     <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, class: 'profile-img' %>
     <% else %>
