@@ -12,7 +12,7 @@ require "json"
 
 Movie.destroy_all
 
-results = URI.open("https://api-gate2.movieglu.com/filmsNowShowing/?n=25",
+results = URI.open("https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
   "client" => "FSPV",
   "x-api-key" => "6by7ZduRjM504ltXN5DF510Rk4fcSBIoxqPoY6J1",
   "authorization" => "Basic RlNQVjo3ZlB3SEM1c0xSQTk=",

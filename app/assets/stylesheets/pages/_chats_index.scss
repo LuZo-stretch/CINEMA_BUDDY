@@ -75,6 +75,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin-left: 10px;
   transition: background-color 0.3s ease;
+  flex-shrink: 0;
 
   &:hover {
     background-color: #34343E; // Change background color to greyish tone on hover
@@ -83,12 +84,13 @@ body {
 
 .card-product img {
   border-radius: 50%;
-  height: 50px;
+  height: 40px;
   width: 50px;
   object-fit: cover;
   padding-left: 5px;
   padding-right: 5px;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 
   &:hover {
     transform: scale(1.1); // Scale up the image slightly on hover
