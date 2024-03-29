@@ -13,25 +13,25 @@ require "json"
 Movie.destroy_all
 
 results = URI.open("https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
-  "client" => "FSPV",
-  "x-api-key" => "6by7ZduRjM504ltXN5DF510Rk4fcSBIoxqPoY6J1",
-  "authorization" => "Basic RlNQVjo3ZlB3SEM1c0xSQTk=",
+  "client" => "MFRV",
+  "x-api-key" => "tKrmW4R3lRoMUBt2bI3KaknwexxcZy49KoMStNfb",
+  "authorization" => "Basic TUZSVjpWOVk1cFFNTnJNVno=",
   "territory" => "UK",
   "api-version" => "v200",
-  "geolocation" => "-52.47;-1.93",
+  "geolocation" => "52.47;-1.93",
   "device-datetime" => "2024-03-29T18:47:00.000Z").read
 movies = JSON.parse(results)
 
 movies["films"].each do |movie_data|
   id = movie_data["film_id"]
   movie_results = URI.open("https://api-gate2.movieglu.com/filmDetails/?film_id=#{id}",
-    "client" => "FSPV",
-    "x-api-key" => "6by7ZduRjM504ltXN5DF510Rk4fcSBIoxqPoY6J1",
-    "authorization" => "Basic RlNQVjo3ZlB3SEM1c0xSQTk=",
+    "client" => "MFRV",
+    "x-api-key" => "tKrmW4R3lRoMUBt2bI3KaknwexxcZy49KoMStNfb",
+    "authorization" => "Basic TUZSVjpWOVk1cFFNTnJNVno=",
     "territory" => "UK",
     "api-version" => "v200",
-    "geolocation" => "-52.47;-1.93",
-    "device-datetime" => "2024-03-25T18:47:00.000Z").read
+    "geolocation" => "52.47;-1.93",
+    "device-datetime" => "2024-03-29T18:47:00.000Z").read
   movie_info = JSON.parse(movie_results)
   movie = Movie.create(
     title: movie_data["film_name"],
